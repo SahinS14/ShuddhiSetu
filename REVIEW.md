@@ -1,11 +1,15 @@
-# Project Review: Biochar Toilet Prototype
+# ShuddhiSetu: An Affordable, Nature-Inspired In-Situ Excreta Treatment and Groundwater Protection System
+
+*Accelerating Nature. Protecting Every Drop.*
+
+ShuddhiSetu covers biochemical treatment, smart monitoring, pathogen reduction, and nutrient recovery. The technical material below documents the existing thermal treatment prototype.
 
 ## 1. Project Summary
 
-**Goal:** Develop a low-cost, low-energy Biochar Toilet capable of quickly reducing human waste to sanitary biochar, primarily targeting impoverished communities lacking sewage infrastructure.
+**Goal:** Develop a low-cost, low-energy ShuddhiSetu capable of quickly reducing human waste to sanitary biochar, primarily targeting impoverished communities lacking sewage infrastructure.
 
 **Methodology:**
-- **Phase 1 (Current):** A prototype using a pressure cooker to validate the core physical processes: heating, pressurization, "flash" decompression for sterilization and cell destruction, and dryness detection.
+- **Prototype:** A prototype using a pressure cooker to validate the core physical processes: heating, pressurization, "flash" decompression for sterilization and cell destruction, and dryness detection.
 - **Process:** The system seals the waste and heats it until a target pressure (e.g., 15 PSI) and temperature (e.g., 121°C) are reached. A valve then opens to "flash" the water into steam, sterilizing the sample. Once the sample is dry (detected when temperature rises without a corresponding pressure increase), it is further heated to charring temperatures.
 - **Components:** The current system uses a pressure sensor, a thermocouple, a solid-state relay (SSR) for a hot plate, and a solenoid valve. The future design envisions an induction-heated, internally-fitting oval stainless steel pressure vessel with a magnetite catalyst.
 

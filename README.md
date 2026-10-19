@@ -1,96 +1,230 @@
-# Current Status
+<div align="center">
 
-Phase 1 (conductive heating prototype) is complete. All experiment data, firmware, schematics, PCB design files, and progress reports are in the [`Conductive Heating Prototype/`](https://github.com/PubInv/Biochar-Toilet/tree/main/Project%20Files/Conductive%20Heating%20Prototype) folder.
+# ShuddhiSetu
 
-We're now in Phase 2: induction heating using a magnetite matrix. The shift from resistive heating matters because induction generates heat directly inside the charring cup — no exposed coils corroding in the process environment, and faster energy delivery to the material itself.
+### Accelerating Nature. Protecting Every Drop.
 
-Ongoing experiment logs are in the [Progress Reports](https://github.com/PubInv/Biochar-Toilet/blob/main/Project%20Files/Progress%20Reports.md). Dedicated firmware for the dual-induction prototype is located in [`Project Files/Induction Heating Prototype/Firmware`](https://github.com/PubInv/Biochar-Toilet/tree/main/Project%20Files/Induction%20Heating%20Prototype/Firmware).
+**ShuddhiSetu: An Affordable, Nature-Inspired In-Situ Excreta Treatment and Groundwater Protection System**
 
-<img width="849" height="482" alt="Screenshot 2025-11-21 at 6 10 39 PM" src="https://github.com/user-attachments/assets/6e3a36fb-60a5-46c5-8a6b-8c2908af25fd" />
+On-site sanitation • Instrumented containment • Treatment at source • Resource recovery
+
+[Prototype Gallery](#prototype-gallery) · [System Architecture](#system-architecture) · [Experimental Evidence](#experimental-evidence) · [Engineering Files](#engineering-files) · [Validation Roadmap](#validation-roadmap)
+
+</div>
 
 ---
 
-# Biochar Toilet
+> **From containment to controlled treatment.** ShuddhiSetu aims to help rural households treat excreta where it is generated, reduce dependence on waste transport, and protect surrounding soil and groundwater. This repository contains a tangible engineering foundation: experimental treatment hardware, assembled custom PCBs, embedded control firmware, induction-heating trials, and mechanical design files.
+>
+> **Current maturity:** laboratory prototype using water and surrogate organic materials. Rural affordability, treatment of human excreta, pathogen reduction, groundwater protection, and agricultural reuse remain validation objectives.
 
-A reliable toilet that could quickly reduce human fecal matter to completely sanitary biochar would make the poorest people of the
-Earth healthier. In many communities, Western-style sewage systems would be very expensive and impractical due to
-geology, the lack of density in farming communities made of small land holdings, a lack of capital, and a lack of
-social and political organization to dig trenches and lay pipes efficiently.
+<p align="center">
+  <img src="images/PXL_20260424_215319406.webp" alt="Physical induction experiment setup with copper coil, crucible, induction electronics and power supply on a workbench" width="780">
+  <br>
+  <em>Physical experimental setup: copper induction coil, sample vessel, driver electronics, and power supply.</em>
+</p>
 
-Reducing a typical human stool to biochar requires an energy input of about 600 kilojoules (see detailed analysis in referenced spreadsheet).
-Even for the poorest people, the cost of this electricity is quite low---less than one US cent $0.01USD. One kilowatt hour is 3.6 MJ (megajoules).
-Expensive electrical power around the world is $0.45/kWh is $0.075 USD--or less than eight cents. Even if our toilet is inefficient, it
-seems possible to make a toilet whose operating cost is affordable for the poorest people, at $27.375 per year (this cost does not include
-the capital costs of the toilet).
+## The problem we address
 
-Biochar can be used as a fuel or a garden amendment. Note, however, that human stools are so small (128 grams nominally) that this is not a meaningful approach for carbon sequestration.
+**Organization:** Ministry of Jal Shakti (MoJS)<br>
+**Problem statement:** On site containment-based Toilets: Innovative technological, biochemical, or nature-based interventions for expediting in-situ treatment of excreta without harming environment/ water table.
 
-# Initial Design Idea
+The supplied problem statement identifies a need to strengthen Individual Household Latrines under SBM(G): accelerate stabilization, reduce pathogens and sludge accumulation, recover nutrients, and protect soil and the water table. Rural deployment also needs to account for water scarcity, construction quality, sustained usage, affordability, and limited monitoring.
 
-The problem of toilets is a widely researched area. Our approach may be slightly novel. We start from some assumptions:
+ShuddhiSetu adopts these as design requirements. Its broader identity accommodates biochemical treatment, nature-inspired interventions, smart monitoring, and resource recovery; **the implementation currently documented here concentrates on instrumented thermal treatment and mineral-assisted induction experiments.** Biochemical treatment is a future integration option, with no demonstrated biochemical module in this repository.
 
-1. Electricity is an input.
-2. Complete biological safety of the end product is required.
-3. We choose to temporarily ignore the capital costs of the toilet in our research.
-4. Because we have to char in the absence of oxygen to prevent combustion, we can assume that we need an air-tight or pressure controlled reaction vessel.
-5. A major problem in charring is to first dry the sample, and drying is primarily a problem of water transport.
+| Problem-statement requirement | ShuddhiSetu approach | Evidence and remaining work |
+|---|---|---|
+| Accelerate in-situ stabilization | Controlled drying and experimental thermal conversion within an on-site treatment module | Surrogate-material experiments exist; full excreta treatment time and stabilization need measurement |
+| Enhance pathogen reduction | Develop a monitored treatment cycle with measurable temperature and exposure time | Temperature sensing exists; microbiological efficacy has not been established |
+| Minimize sludge accumulation | Investigate drying and conversion of organic solids into a smaller residual stream | Quantified dry-solids mass balance and repeated-cycle trials are pending |
+| Protect soil and groundwater | Design a contained treatment path with managed condensate, gases, and residual solids | Leakage, leachate quality, and hydrogeological suitability require validation |
+| Recover useful resources | Investigate solid-product recovery and reuse of mineral heating media | Surrogate charring and qualitative magnetic separation are reported; nutrient retention and reuse safety need testing |
+| Remain affordable and scalable | Standard components, custom control PCB, documented fabrication files, modular assemblies | Board BOM is documented; complete installed cost and operating cost are not established |
+| Support sustained household use | Reduce operator burden through sensing and automatic actuation | Local serial monitoring and control exist; household usability and maintenance trials are pending |
 
-We therefore conclude that our basic design will be a sealed reaction vessel with a valve that allows steam to be transported out
-of the reaction chamber. We will heat the chamber contents until a desired pressure is created and then transport the water
-vapor away by opening the valve. The valve will be controlled so as to avoid most gases (air) from entering the chamber.
-Opening the valve will "flash" the water in the sample into steam, which will have the desirable properties of being
-extremely murderous to any organisms present in the sample, and physically destructive to both plant and animal cells.
-It may even physically disrupt the sample, which could be advantageous.
+## Prototype gallery
 
-When the sample is sufficiently dry, we will heat it to charring temperature. When the sample is fully charred, and then cooled
-and possibly wetted to avoid spontaneous combustion, the operator will be alerted that the sample is safe to remove and either combust or use as a garden amendment.
+### Custom electronics: assembled hardware
 
-# Energy Analysis
+<p align="center">
+  <img src="images/PCB_Board.webp" alt="Three physical custom control PCBs showing successive assembly states, screw terminals, driver components and an installed ESP32 module" width="850">
+</p>
 
-Volunteer Nupur Bhalla working with Invention Coach Robert L. Read has produced a [Google Sheet](https://docs.google.com/spreadsheets/d/1ZwIqP0B2wM6QrpZTNiK1hNnNmIEIal7qxYdgEJz8Iog/edit?usp=sharing) representing an energy analysis of the drying and heating process.
+The control electronics have progressed beyond a breadboard. The photographed boards show physical assemblies; the repository also includes editable KiCad schematics and layout, a component BOM, manufacturing-layer exports, and drill files. The board brings pressure sensing, thermocouple input, heater switching, and valve drivers onto a common platform.
 
-# Heating Mechanisms
+### Vessel integration and reactor concept
 
-Since we will have a sealed metal reaction vessel, radio frequency (RF) heating is a possibility.
-However, it is expected to become less effective as the sample dries.
-We therefore intend to explore the possibility of using simple Joule resistive heating of a stainless steel vessel directly.
-RF heating, however, has the advantage of heating the sample volumetrically (not requiring conduction), which may be a tremendous advantage.
+<table>
+<tr>
+<td width="50%" align="center"><img src="images/PXL_20260417_191130522.webp" alt="Top view of an experimental vessel assembly with inner ceramic container, copper tubing and external fittings" width="390"><br><strong>Physical vessel assembly</strong><br>Inner container, copper tubing, outer vessel, and fittings.</td>
+<td width="50%" align="center"><img src="images/coil_vessel_liner.webp" alt="Cutaway design illustration showing an induction coil surrounding a layered vessel and inner treatment cup" width="390"><br><strong>Reactor design concept</strong><br>Cutaway illustration of coil, liner, and inner treatment zone; this is a design visualization.</td>
+</tr>
+</table>
 
-# Phase 1: Conductive Heating Prototype (Complete)
+### Material experiments and sample outcomes
 
-Phase 1 used a pressure cooker as the reaction vessel, a hot plate controlled by an SSR, and an ESP32-based sensing system. The goal was to confirm the core architecture before committing to higher-temperature methods.
+<table>
+<tr>
+<td width="50%" align="center"><img src="images/PXL_20260307_002658313.webp" alt="Overhead photograph of an instrumented crucible experiment on a workbench" width="330"><br><strong>Bench experimentation</strong><br>Small-scale setup used to investigate heating behavior.</td>
+<td width="50%" align="center"><img src="images/PXL_20260327_165919695.webp" alt="Close-up of darkened surrogate organic samples inside an experimental crucible" width="330"><br><strong>Surrogate sample result</strong><br>Visible material change from an experimental run; appearance alone does not establish sanitation or reuse safety.</td>
+</tr>
+</table>
 
-It worked. When pressure drops below ~1 PSI while temperature keeps climbing, the system correctly identifies the dry state and cuts heater power automatically. Flash decompression also checked out — opening the solenoid under pressure causes trapped water to flash to steam. A bread charring test (~110°C, 2h40m) produced a visibly charred loaf, though the dryness algorithm didn't trigger since the bread's low moisture content didn't produce a distinct enough pressure change during drying. Soot accumulation on the lid also flagged particulate management as something to design for in future iterations.
+## System architecture
 
-The hard limit we hit: full charring temperatures aren't safe inside a standard pressure cooker. Lawrence Kincheloe suggested placing an inner cup (heated by a silicon nitride igniter) inside the vessel so the outer shell stays cool — that idea feeds directly into Phase 2.
+The architecture separates material handling, embedded control, and environmental safeguards. Solid arrows below describe the prototype hardware/control path; dashed arrows identify proposed treatment and recovery connections that still need integrated validation.
 
-We also designed a custom control PCB for this phase (ESP32-H2, v0.3.0) with dual MOSFET valve drivers, dual SSR outputs, a pressure ADC, and a MAX31855 thermocouple interface. Everything is in the [`Conductive Heating Prototype/`](https://github.com/PubInv/Biochar-Toilet/tree/main/Project%20Files/Conductive%20Heating%20Prototype) folder.
+```mermaid
+flowchart TB
+    IN["On-site excreta input<br/>Future household interface"] -.-> V["Contained treatment vessel<br/>Current tests: water and organic surrogates"]
 
-# Phase 2: Induction System Development (In Progress)
+    subgraph PROCESS["Treatment hardware"]
+        V --> INNER["Inner treatment cup<br/>Mineral-assisted heating experiments"]
+        MAIN["Main induction driver and coil<br/>SSR 1"] --> INNER
+        V --> VALVE["MOSFET-controlled steam valve"]
+        VALVE -.-> COND["Condensate collection and treatment<br/>Integrated validation pending"]
+        V -.-> GAS["Proposed gas processing<br/>Catalyst, sulfur capture, heat recovery"]
+        SECOND["Second heater output<br/>SSR 2"] -.-> GAS
+        INNER -.-> SOLID["Recovered solids and heating media<br/>Characterization before reuse"]
+    end
 
-We've switched from resistive heating to pulsed induction using a magnetite matrix. The magnetite sits inside the charring cup and converts the induction field directly into heat — no exposed coils, no conduction losses through the vessel wall.
+    subgraph CONTROL["Embedded monitoring and actuation"]
+        P["Analog pressure sensor<br/>ADC input"] --> MCU["ESP32-H2 control PCB"]
+        T["K-type thermocouple<br/>MAX31855 over SPI"] --> MCU
+        V --> P
+        V --> T
+        MCU --> MAIN
+        MCU --> SECOND
+        MCU --> VALVE
+        MCU --> LOG["Local serial telemetry<br/>Pressure, temperature, outputs, flags"]
+        MCU -.-> PUMP["Optional circulation pump<br/>Disabled in current firmware"]
+    end
 
-Dedicated dual-induction firmware and specifications are documented in [`Project Files/Induction Heating Prototype/README.md`](https://github.com/PubInv/Biochar-Toilet/blob/main/Project%20Files/Induction%20Heating%20Prototype/README.md).
+    subgraph VALIDATION["Environmental validation targets"]
+        COND -.-> WATER["No uncontrolled discharge<br/>Water-quality and leakage testing"]
+        GAS -.-> AIR["Measured exhaust quality"]
+        SOLID -.-> REUSE["Pathogen, nutrient and leachability tests"]
+    end
+```
 
-Early results from Lawrence Kincheloe and Peter are encouraging. Five grams of magnetite reached 740°F in 60 seconds; the same mass of carbon steel bearings only hit 130°F. Volume-matching the steel to the magnetite closes the gap considerably (~940°F peak), which suggests surface area and density matter more than material choice at this scale. They also charred cheese puffs at 833°F over 16 minutes in open air, with residue on the crucible cap showing evidence of partial pyrolysis.
+### How the current prototype works
 
-Full experiment logs are in the [Progress Reports](https://github.com/PubInv/Biochar-Toilet/blob/main/Project%20Files/Progress%20Reports.md).
+1. **Contain and instrument.** An experimental vessel holds the test material while pressure and temperature are measured.
+2. **Apply controlled heat.** The conductive prototype uses an SSR-switched hot plate. The induction implementation provides a main coil output and a second heater output for the proposed gas-treatment zone.
+3. **Manage vapor release.** Pressure hysteresis controls an electrically actuated valve. Earlier tests found that valve restriction prevented an instantaneous flash-pressure drop.
+4. **Detect a low-pressure dry-state candidate.** Embedded firmware tracks a sustained low-pressure interval after cycle activation and latches heater shutdown. This is a control heuristic, not a measurement of pathogen destruction or complete treatment.
+5. **Investigate conversion and recovery.** Separate induction trials explore magnetite, bentonite, and steel media with organic surrogates. Gas treatment, condensate treatment, and safe solid recovery require further integration.
 
-# Research Plans
+## Control electronics and firmware
 
-The next step is pushing the induction system to actual charring temperatures — hot enough to produce biochar from organic material comparable to human stool. Work on coil geometry and magnetic field focusing is ongoing in parallel with fabrication.
+| Subsystem | Repository implementation |
+|---|---|
+| Controller | ESP32-H2 DEVKITM-1-N4 running ESP-IDF firmware |
+| Temperature input | K-type thermocouple through MAX31855; SPI on GPIO0/1/2 |
+| Pressure input | Analog sensor through voltage divider; induction firmware uses GPIO3 / ADC channel 2 and a 0–15 PSI calibration |
+| Main heater | GPIO4, SSR output; proportional temperature control with time-window switching |
+| Second heater | GPIO5, SSR output; cycle-linked enable, without independent temperature feedback |
+| Valve | GPIO10, MOSFET-driven solenoid with pressure hysteresis |
+| Optional pump / second valve | GPIO11; pump feature disabled in induction firmware |
+| Monitoring | Local serial logs for pressure, filtered temperature, duty, actuator states, dry latch, and emergency trip |
+| Fabrication assets | KiCad project, schematic, PCB layout, BOM, layer exports, and NC drill file |
 
-[![Basic Biochar Toilet Design](https://github.com/user-attachments/assets/ea41856b-7663-43a1-bf12-8a3a2311aef8)](https://github.com/user-attachments/assets/ea41856b-7663-43a1-bf12-8a3a2311aef8) 
+**Current induction firmware settings:** 200°C main-heater target; valve opens at 1.20 PSI and closes at 1.05 PSI; cycle activation at 0.30 PSI; dry candidate at or below 0.15 PSI for 15 seconds; emergency trip at 14 PSI or 250°C. These are source-code settings, not a validated human-excreta treatment protocol. Older conductive-prototype documentation uses a different pressure range and thresholds.
 
+The firmware implements an emergency latch that disables heater outputs and commands the valve open on an over-limit reading. The main heater also requires a valid thermocouple reading. These are software protections; independent mechanical pressure relief, sensor-fault handling across every output, and system-level safety verification remain engineering requirements.
 
-# References
+**Next control-board revision:** a second thermocouple interface, a dedicated circulation-pump connection, and a flow-sensor header are documented in the [hardware revision roadmap](Project%20Files/PCB%20Design/PCB_v0.4.0_Induction_Revision_Plan.md). The high-temperature catalyst concept is not independently temperature-controlled by the present firmware.
 
-"An Experimental 13.56 MHz Radio Frequency Heating System
-for Efficient Thermal Pretreatment of Wastewater Sludge",
-Md. S. Ferdous, Ehssan H. Koupaie, Cigdem Eskicioglu, and Thomas Johnson*
+## Experimental evidence
 
-# Volunteer Opportunities
+These are observations recorded in the repository, rather than independently certified performance results.
 
-This project is still active. If you have a background in mechanical engineering, heat engineering, or chemistry, we'd be glad to hear from you.
+| Experiment / artifact | Recorded observation | What it supports |
+|---|---|---|
+| Magnetite induction trial | 5 g reached **740°F (about 393°C) at 60 seconds** | Small-sample induction response; not whole-reactor heating time |
+| Equal-mass carbon-steel comparison | About 5 g reached **130°F at 60 seconds**; equal-volume steel behaved differently | Media selection and geometry need controlled comparisons |
+| Water evaporation trial | A crucible with magnetite and a cup of water reportedly evaporated its water in **under 8 minutes** | Bench dewatering feasibility; input energy and precise water mass were not reported |
+| Organic surrogate trial | Cheese-puff samples reached a reported **833°F (about 445°C)**; approximately **16 minutes** powered time | Visible charring of surrogate material in an open-air experiment |
+| PCB bring-up | Pressure readings, valve actuation, dry-state logic, and serial output were exercised | Integrated sensing and actuation on physical hardware |
+| Hardware rework | SSR traces remapped to GPIO4/5; D2/D5 replaced; valve operation rechecked | Documented engineering iteration following physical test failures |
+| Mineral recovery demonstration | Magnetic separation of a magnetite-mixed sample was reported | Qualitative feasibility of heating-media recovery |
 
-Reach out to Inventor Coach [Robert L. Read](https://github.com/PubInv/Biochar-Toilet/blob/main/read.robert@gmail.com) or Volunteer Coordinator [Miriam Castillo](https://www.linkedin.com/in/cstllgtrrz/). More at the [Volunteer Page](https://www.pubinv.org/volunteer/).
+**Evidence to inspect:** [Induction measurements](Induction%20experimental%20data.md) · [Dated experiment and bring-up logs](Project%20Files/Progress%20Reports.md) · [Conductive prototype records](Project%20Files/Conductive%20Heating%20Prototype/README.md).
+
+The bread-test records contain conflicting accounts of automatic shutoff: the progress log reports success, while the conductive prototype's known-issues and key-results sections report a missed dryness trigger. A repeated, instrumented trial is needed before presenting that outcome as established. The current 200°C firmware target and 250°C trip also differ from the higher temperatures recorded in separate material experiments.
+
+## Groundwater protection by design
+
+Protecting every drop requires accounting for **all output streams**, not only the treated solids. ShuddhiSetu's proposed environmental boundary includes:
+
+- **Containment:** verify vessel integrity, seals, connections, and leak containment before any household deployment.
+- **Liquids:** collect condensate and characterize its contamination; evaporation does not by itself make the liquid safe for discharge.
+- **Gases:** evaluate particulate removal, sulfur management, gas treatment, and emissions. The [syngas processing memo](Project%20Files/Memos/Syngas_Processing_Memo.md) documents concepts for ceramic components, mineral capture, and heat recovery.
+- **Solids:** measure stabilization, residual pathogens, nutrient availability, and leachability before proposing agricultural use.
+- **Site suitability:** evaluate performance under high water tables, flooding, variable soil conditions, and realistic household loading.
+
+Groundwater protection, lower greenhouse-gas emissions, and safe compost or char use are intended outcomes. They have not yet been demonstrated by the available prototype data.
+
+## Affordability and rural deployment
+
+The control-board documentation records an approximately **US$48 component BOM at March 2026 pricing**. This is a historical electronics estimate, excluding the complete reactor, power supply, heaters, installation, and maintenance. It must not be presented as the cost of a household system.
+
+The experimental setup uses an 1800 W-rated induction driver and a 48 V power architecture. Rated power is not measured energy per treatment cycle. Rural suitability will depend on measured energy per kilogram of wet input, electricity availability, household throughput, local sourcing, repairability, and whole-system lifecycle cost.
+
+The intended deployment model treats material at the source and reduces reliance on centralized handling. Residual-solid removal, consumable replacement, and safe servicing still need an explicit maintenance plan; the prototype does not establish maintenance-free operation.
+
+## Validation roadmap
+
+| Workstream | Measurements needed before making a field-performance claim |
+|---|---|
+| Treatment performance | Defined input mass/moisture, cycle time, temperature distribution, residence time, dry-solids reduction, repeated-cycle performance |
+| Pathogen reduction | Qualified laboratory testing of appropriate indicators and organisms; verified treatment exposure throughout the material |
+| Water and soil protection | Liquid mass balance, condensate/leachate quality, leakage tests, solid-product leachability, site-specific groundwater risk |
+| Nutrient recovery | Nitrogen/phosphorus/potassium mass balance, nutrient availability, solid-product quality, and controlled reuse trials |
+| Energy and climate | Metered kWh per cycle and per kilogram, exhaust measurements, comparison against an explicitly defined baseline |
+| Reliability | Sensor faults, valve blockage, power loss, coil insulation, cooling, pressure relief, and safe restart behavior |
+| Rural usability and cost | Installed BOM, local procurement, cleaning and service burden, user acceptance, and household-scale trials |
+| Broader treatment options | Evaluate biochemical or nature-inspired modules against measured treatment, containment, energy, and maintenance needs |
+
+## Engineering files
+
+| Explore | Contents |
+|---|---|
+| [Presentation](Presentations/ShuddhiSetu_Slide_Deck.html) | Local HTML project deck; some assets require internet access |
+| [Control-board documentation](Project%20Files/PCB%20Design/Control%20Board.md) | Circuit architecture, power, sensors, outputs, and board specifications |
+| [KiCad schematic](Project%20Files/PCB%20Design/Control%20Board.kicad_sch) · [PCB layout](Project%20Files/PCB%20Design/Control%20Board.kicad_pcb) | Editable electronics design sources |
+| [Manufacturing-layer exports](Project%20Files/PCB%20Design/Gerber%20Files/) · [Drill files](Project%20Files/PCB%20Design/Drill%20Files/) | Layer PDFs and NC drill data; verify fabrication package before ordering |
+| [Electronics BOM](Project%20Files/PCB%20Design/Bio_Char_BOM_Mouser_FINAL.xlsx) · [Prototype BOM](Project%20Files/BOM/1st_Action_Pyrolysis_BOM.md) | Component and experimental hardware records |
+| [Mechanical CAD](Project%20Files/CAD%20Files/) | FreeCAD assemblies, frame revisions, vessel models, and fittings |
+| [Induction firmware](Project%20Files/Induction%20Heating%20Prototype/Firmware/) | ESP-IDF controller implementation and build scripts |
+| [Conductive firmware](Project%20Files/Conductive%20Heating%20Prototype/Firmware/) | Earlier hot-plate implementation |
+| [Vapor-stack architecture](Project%20Files/Memos/vapor_processing_stack_blueprint.html) | Proposed gas-processing design visualization |
+| [Design notes](DESIGN_IDEAS.md) · [Progress reports](Project%20Files/Progress%20Reports.md) | Design rationale, observations, unresolved issues, and iteration history |
+
+### Software checks
+
+The root-level Python controllers provide separate logic implementations for heater control, valve control, and dryness detection. Their tests can be run from the repository root:
+
+```bash
+python3 -m unittest discover -p 'test_*.py'
+```
+
+These checks exercise Python control logic; they do not establish embedded-firmware equivalence, hardware safety, or treatment efficacy.
+
+### Firmware build
+
+The firmware directories contain platform-specific build scripts and ESP-IDF configuration. Review the [induction firmware guide](Project%20Files/Induction%20Heating%20Prototype/README.md) before building or flashing. Build scripts may download the SDK and clear cached build artifacts. Hardware pin mapping, pressure calibration, and protection limits must match the actual assembly.
+
+## Source and license
+
+This project builds on the technical materials in the [original Biochar-Toilet repository](https://github.com/PubInv/Biochar-Toilet), adapted here under the ShuddhiSetu identity. The included [GNU GPL v3 license](LICENSE) is retained. Photographs and experimental observations document that source project's engineering foundation; the ShuddhiSetu branding does not imply that all photographed work was newly produced for this submission.
+
+---
+
+<div align="center">
+
+**ShuddhiSetu**<br>
+*Accelerating Nature. Protecting Every Drop.*
+
+</div>

@@ -1,7 +1,6 @@
-# Conductive Heating Prototype — Phase 1
+# Conductive Heating Prototype
 
-**Biochar Toilet Project | Phase 1 Documentation** |
-**Contributor:** Hardhik Pyla ([@hardhik03](https://github.com/hardhik03)) |
+**ShuddhiSetu Project | Documentation** |
 **Period:** November 2025 – May 2026 |
 **Status:** Complete
 
@@ -9,7 +8,7 @@
 
 ## Overview
 
-Phase 1 of the Biochar Toilet project was a proof-of-concept prototype to validate the core system architecture before advancing to higher-temperature charring methods. The goal was to build the smallest, safest system possible — one that could demonstrate:
+ShuddhiSetu project used a proof-of-concept prototype to validate the core system architecture before advancing to higher-temperature charring methods. The goal was to build the smallest, safest system possible — one that could demonstrate:
 
 1. Reliable pressure and temperature sensing inside a sealed reaction vessel
 2. Automatic dryness detection using temperature–pressure divergence logic
@@ -54,7 +53,7 @@ A proportional controller (Kp = 0.03) targets 200°C with a 2-second PWM window.
 | Solenoid valve | 12V solenoid, driven by IRLB3813PBF N-channel MOSFET |
 | Heater control | Solid-state relay (SSR 1), NPN BJT driver — active HIGH |
 | Hot plate | External AC hot plate, switched via SSR |
-| Custom PCB | Bio-Char Control Board v0.1.0 (KiCad 9, 2-layer FR4, ~$48 BOM) |
+| Custom PCB | ShuddhiSetu Control Board v0.1.0 (KiCad 9, 2-layer FR4, ~$48 BOM) |
 
 ---
 
@@ -133,7 +132,7 @@ See [`Progress Reports.md`](https://github.com/PubInv/Biochar-Toilet/blob/main/P
 
 **Bread Charring Test (Feb 13, 2026):** A loaf of bread was heated inside the sealed pressure cooker at ~110°C for approximately 2 hours and 40 minutes. The loaf was visibly charred. The dryness detection algorithm did not trigger in this run (see Known Errors #5). Soot accumulation on the chamber lid was observed, raising particulate management as a future design concern.
 
-**Key Finding — Safety Limit:** Full charring temperatures cannot be safely reached inside the pressure cooker vessel. Lawrence Kincheloe proposed an inner charring cup (heated by a silicon nitride igniter) inside the pressure cooker, keeping the outer vessel cool. This informed the transition to Phase 2 (induction heating).
+**Key Finding — Safety Limit:** Full charring temperatures cannot be safely reached inside the pressure cooker vessel. The team proposed an inner charring cup (heated by a silicon nitride igniter) inside the pressure cooker, keeping the outer vessel cool. This informed the transition to induction heating.
 
 ---
 
@@ -164,7 +163,7 @@ Root-level Python scripts (`dryness_monitor.py`, `valve_controller.py`, and thei
 
 ## PCB Design
 
-The Bio-Char Control Board v0.1.0 is documented in detail in the main project PCB Design folder. Key specs:
+The ShuddhiSetu Control Board v0.1.0 is documented in detail in the main project PCB Design folder. Key specs:
 
 - **MCU:** ESP32-H2-DEVKITM-1-N4 (RISC-V 96MHz, WiFi 802.11n, BLE 5.2)
 - **Power:** 12V input → R-78E5.0-1.0 switching regulator (5V) + 2A PTC fuse + reverse-polarity protection
@@ -182,7 +181,7 @@ The Bio-Char Control Board v0.1.0 is documented in detail in the main project PC
 3. Low-moisture samples (like dry bread) do not produce a clear pressure signature during drying, requiring either a different detection heuristic or moisture pre-conditioning.
 4. Soot and particulate management inside the reaction vessel needs to be designed for from the start in future iterations.
 5. Charring temperatures (>400°C) cannot be safely achieved in the pressure cooker configuration — an inner heated vessel is necessary.
-6. The custom PCB successfully consolidates all sensing and control onto a single board, validating the embedded architecture for future phases.
+6. The custom PCB successfully consolidates all sensing and control onto a single board, validating the embedded architecture for future development.
 7. Crystal-reserved GPIOs on the ESP32-H2 (GPIO13, GPIO14 for the 32 kHz RTC crystal) must be identified and avoided during schematic design — they appear usable in simulation but are unresponsive as outputs on hardware while the crystal is active.
 8. 1N4148 diodes are inadequate for solenoid valve safety switch circuits at the currents involved — the forward voltage drop prevents clean gate logic switching. 1N4001 is the correct replacement.
 

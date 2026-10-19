@@ -7,8 +7,8 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 
 # Paths
-INPUT_HTML = "Biochar_Toilet_Slide_Deck.html"
-OUTPUT_HTML = "Biochar_Toilet_Slide_Deck_Offline.html"
+INPUT_HTML = "ShuddhiSetu_Slide_Deck.html"
+OUTPUT_HTML = "ShuddhiSetu_Slide_Deck_Offline.html"
 
 
 # ⚡ Bolt Optimization: Added url_cache and file_cache to eliminate redundant
@@ -20,7 +20,7 @@ def get_base64_from_url(url):
         return url_cache[url]
     try:
         headers = {
-            'User-Agent': 'BiocharToiletOfflineExporter/1.0 (https://github.com/PubInv/Biochar-Toilet; your@email.com)'
+            'User-Agent': 'ShuddhiSetuOfflineExporter/1.0 (https://github.com/PubInv/Biochar-Toilet; your@email.com)'
         }
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()

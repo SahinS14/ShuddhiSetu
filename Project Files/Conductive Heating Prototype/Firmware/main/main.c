@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @brief Bio-Char Control Board v0.1.0 — Integrated Control System
+ * @brief ShuddhiSetu Control Board v0.1.0 — Integrated Control System
  *        ESP-IDF port of the Arduino Dryness_test_PCB firmware
  *
  * Target:  ESP32-H2-DEVKITM-1-N4

@@ -1,21 +1,21 @@
 ## **[07/24/2026]**
 
-**Phase 3 Ideation – Physical System Frame Design**
+**Ideation – Physical System Frame Design**
 
 Worked in FreeCAD 1.1 to pull together Hawkins 12L Pressure Pot assembly components and to start initial system frame rigging design using 20mm x 40mm extruded aluminum and compatible hardware. Uploaded current FCStd file status into the Public Invention/Biochar-Toilet/Project Files/CAD Files folder as "Frame for Assembly_v2.FCStd". Once all essential components are uploaded, and component assembly layout has been established, specific joint bracket hardware will be added to a parts list to create a Frame BOM, and custom brackets will be designed and sent to fabrication as-needed, with details uploaded to Frame BOM. 
 
 
 ## **[07/03/2026]**
 
-**Phase 3 Ideation – High-Temperature H2S Scrubbing Refinement**
+**Ideation – High-Temperature H2S Scrubbing Refinement**
 
-Refined the Phase 3 sulfur mitigation strategy by proposing a high-temperature Silicon Carbide (SiC) and Magnetite cartridge at the bottom of the reaction vessel. This cartridge serves as the final high-temperature "choke point" (800°C+) for downdraft syngas, maximizing H2S removal efficiency before the gas reaches the solenoid valve and external heat recovery hardware. This addition completes the three-tier sulfur defense architecture: in-situ fixation (biochar), peak-temp scrubbing (bottom cartridge), and low-temp polishing (iron sponge). Updates were applied to the [Syngas Processing Memo](Memos/Syngas_Processing_Memo.md) and `DESIGN_IDEAS.md`.
+Refined the sulfur mitigation strategy by proposing a high-temperature Silicon Carbide (SiC) and Magnetite cartridge at the bottom of the reaction vessel. This cartridge serves as the final high-temperature "choke point" (800°C+) for downdraft syngas, maximizing H2S removal efficiency before the gas reaches the solenoid valve and external heat recovery hardware. This addition completes the three-tier sulfur defense architecture: in-situ fixation (biochar), peak-temp scrubbing (bottom cartridge), and low-temp polishing (iron sponge). Updates were applied to the [Syngas Processing Memo](Memos/Syngas_Processing_Memo.md) and `DESIGN_IDEAS.md`.
 
 ## **[07/01/2026]**
 
-**Phase 3 Ideation – Syngas Processing and Ceramic Liners**
+**Ideation – Syngas Processing and Ceramic Liners**
 
-Documented advanced Phase 3 concepts regarding the management of syngas exhaust and modular ceramic liner assemblies. A new engineering memo was created detailing the highly practical lean combustion pathway for oxidizing Syngas into CO₂, and exploring sulfur mitigation strategies directly within the biochar mixture using in-situ fixation and Iron Sponge dry scrubbers. Furthermore, design guidelines for "leaky" modular ceramic assemblies with slip-fit baffles were established to prevent thermal shear failure in the heat exchanger. The complete analysis is recorded in the [Syngas Processing Memo](Memos/Syngas_Processing_Memo.md) and linked in `DESIGN_IDEAS.md`.
+Documented advanced concepts regarding the management of syngas exhaust and modular ceramic liner assemblies. A new engineering memo was created detailing the highly practical lean combustion pathway for oxidizing Syngas into CO₂, and exploring sulfur mitigation strategies directly within the biochar mixture using in-situ fixation and Iron Sponge dry scrubbers. Furthermore, design guidelines for "leaky" modular ceramic assemblies with slip-fit baffles were established to prevent thermal shear failure in the heat exchanger. The complete analysis is recorded in the [Syngas Processing Memo](Memos/Syngas_Processing_Memo.md) and linked in `DESIGN_IDEAS.md`.
 
 
 ## **[06/17/2026]**
@@ -44,7 +44,7 @@ We should have created a fresh batch of tested mix, our existing mix may not be 
 
 **PCB Control Board – Trace Rework and Hardware Fixes**
 
-Following Test 1 findings, Hardhik performed hardware rework on the Bio-Char Control Board (v0.1.0) to resolve the two issues identified on 05/06:
+Following Test 1 findings, The team performed hardware rework on the ShuddhiSetu Control Board (v0.1.0) to resolve the two issues identified on 05/06:
 
 GPIO13 and GPIO14 traces to the SSR control lines were physically cut on the PCB. Jumper wires were soldered from GPIO4 and GPIO5 directly to the SSR1 and SSR2 pads respectively, bypassing the original routing. This brings the hardware into alignment with the current firmware pin assignments. The trace cut and remap will be incorporated into the next PCB design revision.
 
@@ -58,7 +58,7 @@ These changes are hardware-only, no firmware modifications were required.
 
 **PCB Control Board – Initial Testing (Test 1)**
 
-Hardhik conducted the first round of physical tests on the assembled Bio-Char Control Board (v0.1.0). The test session covered four areas of the board's integrated control firmware, but also uncovered two hardware issues that required rework.
+The team conducted the first round of physical tests on the assembled ShuddhiSetu Control Board (v0.1.0). The test session covered four areas of the board's integrated control firmware, but also uncovered two hardware issues that required rework.
 
 PSI readings from the analog pressure sensor were confirmed correct across the expected range. ADC-to-PSI calibration constants (ADC_ZERO = 320, ADC_FULL = 3008) were validated against a reference gauge. The dry-boiler detection logic also worked as expected — after a sustained pressure drop below 1 PSI for 15 seconds following an active cycle, the dryLatched flag triggered and the heater SSR was disabled correctly. A full-system Serial readout at 115200 baud was recorded showing pressure, valve, heater, and temperature simultaneously.
 
@@ -75,7 +75,7 @@ Valve hysteresis (8 PSI open, 7 PSI close) was verified using the GPIO4/GPIO5 wo
 
 
 ## **[04/24/2026]**
-Lawrence and Peter ran a series of experiments with different amounts of material that we want to use for induction heating. 
+The team ran a series of experiments with different amounts of material that we want to use for induction heating.
 The temperature measurements are located in [Induction experimental data.md](https://github.com/PubInv/Biochar-Toilet/blob/main/Induction experimental data.md)
 Interestng results were that we didn't hit the curie temperature of the carbon steel, as evident by the thermal readings and the presence of a magnetic field. Based on
 color charts for steel and our measurements, we estimate we got up between 900-1000 degrees F for the pure ball bearing. 
@@ -89,7 +89,7 @@ It is believed that this is due to eddie currents, which seem to favor lengh wis
 The "Mixed" Thermal Inertia: The mixture shows a much more gradual and staggered climb, likely due to the Bentonite acting as a thermal buffer or insulator between the active heating elements.
 Further adjustments to the mix will need to be determined to balance thermal heat transfer, rapid heating, and options for agitation. 
 
-Peter will drill out the holes for the induction heater next week, and we are continuing to debug issues with the higher power induction coil. 
+The team will drill out the holes for the induction heater next week, and we are continuing to debug issues with the higher power induction coil.
 Right now we suspect the issue may be the spacing on the coils (currently 10-30mm), but it's interesting to note that coil geometry has a large effect on heating potential. 
 We may need to accelerate our understanding of coil geometry and options for focusing the magnetic field towards the center of the crucible.
 
@@ -98,7 +98,7 @@ We may need to accelerate our understanding of coil geometry and options for foc
 
 
 ## **[03/27/2026]**
-Lawrence and Peter ran an experiment attempting to char cheese puffs. The cheese puffs are about 8mm in diameter, 
+The team ran an experiment attempting to char cheese puffs. The cheese puffs are about 8mm in diameter,
 and there were about 6 of them in the crucible, moistened with water and coated in mostly magnetite with some kitty litter.
 The induction coil system had been running for about 5 minutes when the mixture began smoking. The max temperature attained was 833F before the team put a cap on the 
 system at the 9 minute marker (an arbitrary amount of time).
@@ -114,12 +114,12 @@ The total powered time of this experiment was about 16 minutes.
 
 
 ## **[03/20/2026]**
-Lawrence and Peter had identified and (Lawrence) updated the project BOM with the bulkhead fittings and hardware required for the induction coil 
+The team had identified and updated the project BOM with the bulkhead fittings and hardware required for the induction coil
 system to insulate the energized copper from the aluminum pot, as well as to seal the fitting and lock the insulated sleeve in place using a 
 furrel nut and insolating washer. They also identified 440 stainless steel shot 2mm as being an excellent starting point for mixing with
 the magnetite.
 
-Peter had digitized the bounding box of the induction module (for clearance) and the model of the 1" air line's bulkhead fitting;
+The team had digitized the bounding box of the induction module (for clearance) and the model of the 1" air line's bulkhead fitting;
 he also imported STEP files of the PSU and T-Pipe fitting. The purpose for this is to create proper mounting systems contining the 
 components to make a solid, safe, transportable unit for demonstration and experimentation.
 
@@ -129,9 +129,9 @@ components to make a solid, safe, transportable unit for demonstration and exper
 
 ## **[03/18/2026]**
 
-**Bio-Char Control Board PCB – v0.1.0 Design Complete**
+**ShuddhiSetu Control Board PCB – v0.1.0 Design Complete**
 
-Hardhik completed the design and manufacturing file generation for the Bio-Char Control Board v0.1.0, an ESP32-H2-based industrial control PCB purpose-built for the bio-char production system. The design work ran from March 5 through March 18, spanning 14 KiCad revision checkpoints.
+The team completed the design and manufacturing file generation for the ShuddhiSetu Control Board v0.1.0, an ESP32-H2-based industrial control PCB purpose-built for the bio-char production system. The design work ran from March 5 through March 18, spanning 14 KiCad revision checkpoints.
 
 The board integrates the full sensor and control stack onto a single 2-layer FR4 PCB:
 - **Microcontroller:** ESP32-H2-DEVKITM-1-N4 (RISC-V 96MHz, WiFi 802.11n, BLE 5.2, Thread/Zigbee capable)
@@ -147,7 +147,7 @@ The complete BOM was finalized and verified against Mouser Electronics pricing: 
 
 
 ## **[03/06/2026]**
-Lawrence and Peter were able to fill a crucible with 100% magnetite and a cup of water, then using only the induction coil 
+The team was able to fill a crucible with 100% magnetite and a cup of water, then using only the induction coil
 system, was able to evaporate all of the water in less than 8 minutes, starting with the sample at room temperature.
 Next steps towards biochar include testing different ratios of kitty litter (bentonite), magnetite, and mild steel shot to not only
 evaporate water quickly, but to char an organic sample. 
@@ -161,7 +161,7 @@ Data will be collected then analyzed via spreadsheet graph comparison.
 
 **Dryness Detection + Auto Shutoff – Bread Charring Test**
 
-Hardhik ran a combined dryness-detection and automatic shutoff test using bread as the organic sample. The system consisted of the microcontroller connected to a solenoid valve and an SSR-controlled hot plate. Key hardware integrations documented in this session included the SSR wired to the hot plate and the microcontroller-to-valve connection.
+The team ran a combined dryness-detection and automatic shutoff test using bread as the organic sample. The system consisted of the microcontroller connected to a solenoid valve and an SSR-controlled hot plate. Key hardware integrations documented in this session included the SSR wired to the hot plate and the microcontroller-to-valve connection.
 
 The bread was placed in the charring vessel and the system was powered on. The hot plate heated the sample while the pressure sensor monitored internal pressure. The dryness detection logic — which tracks a sustained low-pressure window after an initial active cycle — successfully identified when the material had dried sufficiently and triggered the auto shutoff, cutting power to the hot plate via the SSR.
 
@@ -177,7 +177,7 @@ Video evidence of the test process and the final charred bread result were captu
 
 **Dryness Detection + Valve Auto Shutoff – Hardware Integration**
 
-Hardhik integrated the microcontroller, solenoid valve, and SSR into a working prototype for the dryness detection and auto-shutoff system. Prior breadboard work was assembled into a more connected configuration, with the valve and SSR now driven directly by the ESP32 GPIO outputs.
+The team integrated the microcontroller, solenoid valve, and SSR into a working prototype for the dryness detection and auto-shutoff system. Prior breadboard work was assembled into a more connected configuration, with the valve and SSR now driven directly by the ESP32 GPIO outputs.
 
 Multiple video recordings were captured documenting the valve actuation behavior, the sensor feedback loop, and overall system operation. The system demonstrated the ability to open and close the solenoid valve based on pressure thresholds, while independently managing the heater SSR through the temperature control loop — operating both control loops concurrently without interference.
 
@@ -190,7 +190,7 @@ This session established the core firmware architecture (pressure-based valve hy
 ## **[12/11/2025]**
 **Dryness Detection – Breadboard Prototype**
 
-Hardhik built and tested an initial breadboard prototype for dryness detection. The circuit connected a pressure sensor and solenoid valve to an ESP32 microcontroller to test the concept of detecting when a heating cycle has driven off all moisture from a sample.
+The team built and tested an initial breadboard prototype for dryness detection. The circuit connected a pressure sensor and solenoid valve to an ESP32 microcontroller to test the concept of detecting when a heating cycle has driven off all moisture from a sample.
 
 Key tests conducted in this session:
 
@@ -207,7 +207,7 @@ The breadboard circuit provided confidence in the sensing and actuation approach
 ## **[12/05/2025]**
 **Pressure Sensor – Initial Physical Testing**
 
-Following the pressure sensor schematic work (Nov 21), Hardhik conducted the first physical pressure sensor tests. Two recordings were captured: one showing successful pressure sensor calibration against a reference, and one documenting a sensor error condition (likely an out-of-range or wiring issue) to characterize failure modes.
+Following the pressure sensor schematic work (Nov 21), The team conducted the first physical pressure sensor tests. Two recordings were captured: one showing successful pressure sensor calibration against a reference, and one documenting a sensor error condition (likely an out-of-range or wiring issue) to characterize failure modes.
 
 The calibration session established the ADC-to-PSI mapping that would later be formalized in firmware (ADC_ZERO ≈ 320, ADC_FULL ≈ 3008 for 0–100 PSI full-scale). Understanding the error behavior of the sensor was an important step for designing reliable dryness detection logic in subsequent firmware iterations.
 
@@ -218,7 +218,7 @@ The calibration session established the ADC-to-PSI mapping that would later be f
 ## **[11/21/2025]**
 **Pressure Sensor – Schematic Design**
 
-Hardhik designed the initial pressure sensor schematic for the Phase 1 prototype. The schematic documents the sensor wiring, voltage divider configuration (0–5V → 0–3.3V for ESP32 ADC compatibility), and connector pinout. This served as the hardware reference for subsequent physical testing and was later incorporated directly into the Control Board PCB design.
+The team designed the initial pressure sensor schematic for the prototype. The schematic documents the sensor wiring, voltage divider configuration (0–5V → 0–3.3V for ESP32 ADC compatibility), and connector pinout. This served as the hardware reference for subsequent physical testing and was later incorporated directly into the Control Board PCB design.
 
 
 

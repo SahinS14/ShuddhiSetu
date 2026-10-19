@@ -33,6 +33,6 @@ We should wear PPE, respirator, eye protection, and heat resistant gloves.
 - [ ] Develop a snappy script for the presentation to keep the narrative engaging.
 - [ ] Add story narrative slides to the presentation covering:
   - How the team conceived of the project.
-  - The heat transfer difficulty discovered during Hardhik's experiment.
-  - Lawrence's invention of the induction approach.
+  - The heat transfer difficulty discovered during the experiment.
+  - The development of the induction approach.
   - Progress and difficulties with charring things.

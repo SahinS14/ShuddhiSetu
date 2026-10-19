@@ -138,9 +138,9 @@ To prevent downstream corrosion of the steam valve and heat exchanger, a high-te
 
 ---
 
-## Future Phases: Syngas Processing and Advanced Catalysis
+## Future Development: Syngas Processing and Advanced Catalysis
 
-For detailed engineering considerations on managing exhaust gases, practical lean combustion syngas conversion, and sulfur mitigation strategies within the biochar mix, please refer to the advanced Phase 3 memo: [Syngas Processing Memo](Project Files/Memos/Syngas_Processing_Memo.md).
+For detailed engineering considerations on managing exhaust gases, practical lean combustion syngas conversion, and sulfur mitigation strategies within the biochar mix, please refer to the advanced development memo: [Syngas Processing Memo](Project Files/Memos/Syngas_Processing_Memo.md).
 
 ---
 

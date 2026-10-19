@@ -1,4 +1,4 @@
-# Bio-Char Control Board v0.3.0
+# ShuddhiSetu Control Board v0.3.0
 
 **ESP32-H2 Based Industrial Control System for Bio-Char Production**
 
@@ -6,7 +6,7 @@
 
 ## 📋 Overview
 
-The Bio-Char Control Board is an industrial-grade PCB designed to control and monitor bio-char production processes. It features WiFi/Bluetooth connectivity, multi-voltage power management, high-power output control, and sensor interfaces.
+The ShuddhiSetu Control Board is an industrial-grade PCB designed to control and monitor bio-char production processes. It features WiFi/Bluetooth connectivity, multi-voltage power management, high-power output control, and sensor interfaces.
 
 ### Key Features
 - **ESP32-H2 Microcontroller** - WiFi 802.11n + Bluetooth 5.2
@@ -95,7 +95,7 @@ The Bio-Char Control Board is an industrial-grade PCB designed to control and mo
 
 The control board connects to peripheral hardware specific to each prototype generation:
 
-#### Phase 1: Conductive Heating System Peripherals
+#### Conductive Heating System Peripherals
 | Subsystem | Component | Specifications | Connection |
 |-----------|-----------|----------------|------------|
 | **Heater** | Single Resistive Hot Plate | 120V / 1000W Joule element | SSR 1 Output (GPIO4) |
@@ -103,7 +103,7 @@ The control board connects to peripheral hardware specific to each prototype gen
 | **Valves** | 1× Solenoid Valve | U.S. Solid 1" SS 12V DC | Solenoid 1 MOSFET (GPIO10) |
 | **Temperature** | K-Type Thermocouple | Single sheath in vessel wall | MAX31855 SPI (GPIO0/1/2) |
 
-#### Phase 2: Dual Induction Heating System Peripherals
+#### Dual Induction Heating System Peripherals
 | Subsystem | Component | Specifications | Connection |
 |-----------|-----------|----------------|------------|
 | **Main Heater** | 1800W ZVS Induction Unit | 12V–48V DC, hollow copper vessel coil | SSR 1 Output (GPIO4) |
@@ -327,12 +327,6 @@ PCB Design/
 
 ---
 
-## 👤 Author
-
-**hardhik03**
-- GitHub: [@hardhik03](https://github.com/hardhik03)
-
----
 
 **Last Updated:** March 18, 2026
 **KiCad Version:** 9.0.7

@@ -1,4 +1,4 @@
-# Phase 2: Dual Induction Heating Prototype
+# Dual Induction Heating Prototype
 
 **ESP32-H2 Microcontroller Firmware & Hardware Architecture for Dual Induction Pyrolysis System**
 
@@ -6,7 +6,7 @@
 
 ## 📋 System Overview
 
-The Phase 2 Dual Induction Heating Prototype upgrades the biochar reactor architecture from resistive heating to a dual-induction heating assembly:
+The Dual Induction Heating Prototype upgrades the biochar reactor architecture from resistive heating to a dual-induction heating assembly:
 
 1. **Main Vessel Induction Coil:** Hand-formed hollow copper coil isolated with high-temperature Kapton tape, surrounding the inner vessel inside the modified Hawkins 12L pressure cooker. Driven by an 1800W ZVS DC induction heater via SSR 1 (GPIO4).
 2. **Catalytic Converter Induction Heater:** Dedicated secondary induction heater surrounding the external catalytic converter zone. Driven via SSR 2 (GPIO5) to maintain continuous high temperature (800°C+) during processing for syngas cracking and odor mitigation.

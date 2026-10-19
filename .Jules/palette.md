@@ -6,5 +6,5 @@
 **Action:** Use `.blur()` on toggle buttons after activation if the mode radically alters the UI, and add `e.preventDefault()` in keyboard navigation listeners for custom UI states.
 
 ## 2024-03-24 - Custom Presentation UX Feedback
-**Learning:** When building custom HTML presentation decks (like `Biochar_Toilet_Slide_Deck.html`), native browser progress and navigation cues are lost. Adding a fixed visual progress bar with ARIA progressbar roles, and updating fullscreen toggle buttons' `title` and `aria-label` to explicitly list keyboard shortcuts (e.g. Space/Arrows), significantly improves the discoverability of navigation and overall screen reader accessibility.
+**Learning:** When building custom HTML presentation decks (like `ShuddhiSetu_Slide_Deck.html`), native browser progress and navigation cues are lost. Adding a fixed visual progress bar with ARIA progressbar roles, and updating fullscreen toggle buttons' `title` and `aria-label` to explicitly list keyboard shortcuts (e.g. Space/Arrows), significantly improves the discoverability of navigation and overall screen reader accessibility.
 **Action:** Always include an ARIA-enabled progress indicator for multi-step or paginated custom UI views, and explicitly state hidden keyboard navigation shortcuts in the ARIA labels of the UI controls that initiate those views.

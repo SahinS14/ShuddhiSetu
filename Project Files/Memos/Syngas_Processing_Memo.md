@@ -1,6 +1,6 @@
-# Syngas Processing Memo: Advanced Phase 3 Considerations
+# Syngas Processing Memo: Advanced Considerations
 
-**Note:** This is an advanced Phase 3 idea regarding catalytic and gas management incorporated directly into the biochar mixture and ceramic liner design considerations.
+**Note:** This is an advanced idea regarding catalytic and gas management incorporated directly into the biochar mixture and ceramic liner design considerations.
 
 ## Syngas to CO₂ Conversion Pathways
 

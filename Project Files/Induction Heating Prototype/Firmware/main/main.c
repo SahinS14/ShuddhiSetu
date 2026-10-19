@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @brief Bio-Char Control Board v0.1.0 — Dual Induction Heating & Integrated Control System
+ * @brief ShuddhiSetu Control Board v0.1.0 — Dual Induction Heating & Integrated Control System
  *
  * Target:  ESP32-H2-DEVKITM-1-N4
  * SDK:     ESP-IDF v5.x

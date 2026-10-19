@@ -1,6 +1,6 @@
-# Bio-Char Control Board v0.4.0 — Hardware Revision Roadmap
+# ShuddhiSetu Control Board v0.4.0 — Hardware Revision Roadmap
 
-**Dedicated Hardware Modifications for Phase 2/3 Dual Induction & Closed-Loop Control**
+**Dedicated Hardware Modifications for Dual Induction & Closed-Loop Control**
 
 ---
 

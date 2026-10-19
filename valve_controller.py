@@ -1,6 +1,6 @@
 class ValveController:
     """
-    Controls the steam valve for the Biochar Toilet reaction vessel with safety interlocks.
+    Controls the steam valve for ShuddhiSetu reaction vessel with safety interlocks.
 
     The valve is initially closed. When the pressure reaches the target (e.g., 15 PSI)
     and the temperature reaches the target (e.g., 121 C), the valve opens to "flash"
