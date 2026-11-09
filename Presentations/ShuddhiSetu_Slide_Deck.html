@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShuddhiSetu — Accelerating Nature. Protecting Every Drop.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* GLOBAL SETUP */
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: #f1f3f2;
+            margin: 0;
+            display: grid;
+            gap: 40px;
+            place-items: center;
+            padding: 40px 0;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #fcfdfc;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            font-family: 'DM Sans', sans-serif;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+            border-radius: 4px;
+        }
+
+        /* Background Decorations */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, #1A3D34 0%, #B89E6B 100%);
+            z-index: 10;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            color: #1A3D34;
+        }
+
+        .slide-title {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            border-left: 8px solid #B89E6B;
+            padding-left: 20px;
+            line-height: 1.1;
+            width: 100%;
+            text-align: left;
+        }
+
+        h1 { font-size: 72px; letter-spacing: -1px; }
+        p, li { font-size: 20px; line-height: 1.55; color: #334155; }
+
+        .subtitle {
+            font-size: 26px;
+            color: #64748b;
+            margin-top: 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        /* LAYOUT UTILITIES */
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+        }
+
+        /* Table Layouts */
+        .dense-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 18px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .dense-table th { background-color: #1A3D34; color: #fff; padding: 20px; text-align: left; text-transform: uppercase; letter-spacing: 1px; font-size: 16px; }
+        .dense-table td { padding: 20px; border-bottom: 1px solid #e2e8f0; }
+        .dense-table tr:nth-child(even) { background-color: #f8fafc; }
+        .dense-table .highlight { background-color: rgba(184, 158, 107, 0.1); font-weight: 700; color: #1A3D34; }
+
+        /* Tiles */
+        .tiled-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; }
+        .tile {
+            background: #f8faf9; padding: 25px; border-radius: 12px;
+            border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 10px;
+        }
+
+        /* Bleed Image Layout */
+        .slide-container.bleed-image-layout {
+            padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start;
+        }
+        .bleed-text-side { padding: 80px 60px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+        .bleed-image-side { width: 100%; height: 720px; object-fit: cover; }
+
+        /* Code Block */
+        .code-block {
+            background: #1e293b; color: #e2e8f0; padding: 25px; border-radius: 8px;
+            font-family: 'Azeret Mono', monospace; font-size: 16px; line-height: 1.4;
+            white-space: pre;
+        }
+
+        /* Metrics */
+        .metric-box {
+            background: #1A3D34; color: #fff; padding: 30px; border-radius: 12px; text-align: center;
+        }
+        .metric-value { font-size: 50px; font-weight: 700; display: block; color: #B89E6B; }
+
+        /* Photo Gallery Layout */
+        .photo-gallery {
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; height: 100%;
+        }
+        .photo-placeholder {
+            background: #f1f5f9; border: 2px dashed #94a3b8; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            color: #64748b; text-align: center; padding: 20px;
+        }
+        .photo-placeholder.main-img { grid-row: span 2; }
+
+        .action-button {
+            display: inline-block; background: #1A3D34; color: #fff; padding: 12px 24px;
+            border-radius: 6px; text-decoration: none; font-weight: 700; margin-top: 20px;
+            border: 2px solid #1A3D34; transition: all 0.2s;
+        }
+        .action-button:hover { background: #fff; color: #1A3D34; }
+
+        /* Accessibility: Focus visible */
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid #B89E6B;
+            outline-offset: 4px;
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            width: 100%; height: 350px; background: #fff; border-radius: 8px;
+            border: 1px solid #e2e8f0; padding: 20px; position: relative; margin-top: 20px;
+        }
+        .chart-svg { width: 100%; height: 100%; overflow: visible; }
+        .chart-axis { stroke: #94a3b8; stroke-width: 2; }
+        .line-temp { stroke: #ef4444; stroke-width: 4; fill: none; stroke-linecap: round; }
+        .line-press { stroke: #3b82f6; stroke-width: 4; fill: none; stroke-linecap: round; }
+        .chart-label { font-family: 'DM Sans', sans-serif; font-size: 14px; fill: #64748b; }
+        .chart-legend { position: absolute; top: 30px; left: 40px; background: #f8faf9; padding: 10px 15px; border-radius: 6px; border: 1px solid #e2e8f0; }
+        .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; font-size: 14px; font-weight: 700; }
+        .legend-color { width: 20px; height: 4px; border-radius: 2px; }
+
+        /* Presentation Mode Button */
+        #present-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #B89E6B;
+            color: #1A3D34;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #present-btn:hover {
+            background: #1A3D34;
+            color: #B89E6B;
+        }
+
+        /* Progress Bar */
+        #progress-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1001;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #B89E6B;
+            transition: width 0.3s ease-out;
+        }
+
+        /* Presentation Mode Styles */
+        body.presentation-mode {
+            padding: 0;
+            margin: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        body.presentation-mode #progress-container {
+            display: block;
+        }
+
+        body.presentation-mode .slide-container {
+            display: none;
+            margin: 0;
+            box-shadow: none;
+            border-radius: 0;
+            /* Scale to fit screen while maintaining aspect ratio */
+            transform-origin: center center;
+        }
+
+        body.presentation-mode .slide-container.active {
+            display: flex;
+        }
+
+        body.presentation-mode .slide-container.bleed-image-layout.active {
+            display: grid;
+        }
+
+        body.presentation-mode #present-btn {
+            opacity: 0.2; /* Less distracting in presentation mode */
+        }
+        body.presentation-mode #present-btn:hover {
+            opacity: 1;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 800px) {
+            .slide-container {
+                width: 100% !important;
+                height: auto !important;
+                min-height: 100vh;
+                padding: 20px !important;
+            }
+
+            .two-column,
+            .tiled-content,
+            .photo-gallery,
+            .slide-container.bleed-image-layout {
+                grid-template-columns: 1fr !important;
+            }
+
+            .slide-container.bleed-image-layout {
+                display: flex !important;
+                flex-direction: column;
+            }
+
+            .bleed-text-side {
+                padding: 20px !important;
+            }
+
+            .bleed-image-side {
+                height: auto !important;
+                max-height: 300px !important;
+            }
+
+            .dense-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .slide-title {
+                font-size: 32px !important;
+                margin-bottom: 20px !important;
+            }
+
+            h1 {
+                font-size: 40px !important;
+            }
+
+            .metric-value {
+                font-size: 36px !important;
+            }
+
+            body.presentation-mode {
+                overflow-y: auto !important;
+                align-items: flex-start !important;
+            }
+        }
+
+    </style>
+    <!-- ⚡ Bolt Optimization: Added loading="lazy" to below-the-fold images and preload="none" to video to improve initial load performance. -->
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide-container" style="justify-content: center; align-items: center; text-align: center;">
+    <div style="position: absolute; width: 100%; height: 100%; opacity: 0.03; background: url('https://upload.wikimedia.org/wikipedia/commons/4/4d/Biochar.jpg') repeat; z-index: 0;"></div>
+    <h1 style="z-index: 2;">ShuddhiSetu</h1>
+    <p class="subtitle" style="z-index: 2;">Accelerating Nature. Protecting Every Drop.</p>
+    <p style="z-index: 2; max-width: 900px; font-size: 22px; line-height: 1.5;">ShuddhiSetu: An Affordable, Nature-Inspired In-Situ Excreta Treatment and Groundwater Protection System</p>
+    <p style="z-index: 2; font-size: 18px;">Biochemical Treatment · Smart Monitoring · Pathogen Reduction · Nutrient Recovery</p>
+    <div style="margin-top: 30px; display: flex; gap: 20px; justify-content: center; z-index: 2;">
+        <a href="https://github.com/PubInv/Biochar-Toilet" target="_blank" rel="noopener noreferrer" style="border: 1px solid #1A3D34; color: #1A3D34; padding: 10px 25px; border-radius: 4px; font-weight: 500; text-decoration: none;">Original Technical Repository</a>
+    </div>
+</div>
+
+<!-- Slide 2: Infrastructure Gap -->
+<div class="slide-container bleed-image-layout">
+    <div class="bleed-text-side">
+        <h2 class="slide-title">Infrastructure Gap</h2>
+        <p>According to the 2025 WHO/UNICEF Joint Monitoring Programme report, <strong>3.4 billion people</strong> globally lack safely managed sanitation, with 354 million still practicing open defecation.</p>
+        <p style="margin-top: 15px;">Traditional solutions fail to bridge this gap because:</p>
+        <ul style="margin-top: 20px;">
+            <li><strong>Water Scarcity:</strong> Flush toilets require massive amounts of potable water, making them impossible in arid regions.</li>
+            <li><strong>Pathogen Risk:</strong> Composting toilets require expert management over long periods to be safe.</li>
+            <li><strong>Energy Costs:</strong> Standard incineration is too expensive for rural clinics/homes.</li>
+        </ul>
+    </div>
+    <div class="image-container" style="background: #e2e8f0;">
+        <img loading="lazy" class="bleed-image-side" src="../images/image.webp" alt="High-Level Data Flow architectural diagram" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+</div>
+
+<!-- Slide 3: Sanitation Matrix -->
+<div class="slide-container">
+    <h2 class="slide-title">Sanitation Technology Matrix</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 20px;">How ShuddhiSetu compares to existing infrastructure:</p>
+        <table class="dense-table">
+            <thead>
+                <tr>
+                    <th>System Type</th>
+                    <th>Required Inputs</th>
+                    <th>Primary Output</th>
+                    <th>Key Limitations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Traditional Sewage</strong></td>
+                    <td>Massive Potable Water, Heavy Chemical Treatment</td>
+                    <td>Blackwater / Sludge</td>
+                    <td>High cost; strictly prohibits grease, oils, & medications.</td>
+                </tr>
+                <tr>
+                    <td><strong>Composting</strong></td>
+                    <td>Bulking Agents (Sawdust), Aerobic Oxygen, Time</td>
+                    <td>Humus / Low-Grade Fertilizer</td>
+                    <td>Slow processing; pathogen risk if mismanaged.</td>
+                </tr>
+                <tr>
+                    <td><strong>Incineration</strong></td>
+                    <td>High Electricity/Propane, Ventilation</td>
+                    <td>Sterile Ash, CO2 Emissions</td>
+                    <td>Extremely high energy cost; destroys nutrient value.</td>
+                </tr>
+                <tr class="highlight">
+                    <td><strong>ShuddhiSetu</strong></td>
+                    <td>Medium Electricity (Pulse Heating), Sealed Chamber</td>
+                    <td>Sterile Biochar (Carbon Sink)</td>
+                    <td>Requires efficient drying algorithms to manage high liquid volumes affordably.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 4: Traditional Sewage Deep Dive -->
+<div class="slide-container">
+    <h2 class="slide-title">Deep Dive: Traditional Sewage & Septic</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3><i aria-hidden="true" class="fa-solid fa-check-circle" style="color: #1A3D34; margin-right: 10px;"></i> Advantages</h3>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li><strong>User Convenience:</strong> <a href="https://www.premiertechaqua.com/en-us/blog/septic-system-vs-public-sewer" target="_blank" style="color: #1A3D34;">Instantly removes waste</a> from the property with no user interaction.</li>
+                    <li><strong>Capacity:</strong> Handles large volumes of both blackwater (toilets) and graywater (sinks/showers) effortlessly.</li>
+                    <li><strong>Longevity:</strong> Municipal infrastructure and <a href="https://www.mrrooter.com/oneida/about-us/blog/pros-and-cons-of-a-septic-tank-system/" target="_blank" style="color: #1A3D34;">well-built septic tanks</a> can last for decades with minimal user-facing effort.</li>
+                </ul>
+            </div>
+            <div>
+                <h3><i aria-hidden="true" class="fa-solid fa-times-circle" style="color: #b91c1c; margin-right: 10px;"></i> Limitations</h3>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Resource Intensive:</strong> Consumes <a href="https://www.epa.gov/watersense/residential-toilets" target="_blank" style="color: #1A3D34;">massive amounts of potable water</a> per flush.</li>
+                    <li><strong>Inflexibility:</strong> Completely unviable in arid environments or areas lacking centralized grid infrastructure.</li>
+                    <li><strong>Environmental Risks:</strong> Vulnerable to heavy storms causing sewer overflows; failing septic tanks can <a href="https://www.epa.gov/septic/septic-systems-and-surface-water" target="_blank" style="color: #1A3D34;">contaminate local groundwater</a>.</li>
+                    <li><strong>High Costs:</strong> Extremely expensive municipal infrastructure and <a href="https://straightflushseptic.com/the-pros-and-cons-of-regular-septic-tank-cleaning/" target="_blank" style="color: #1A3D34;">costly main line/septic repairs</a> for homeowners.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14.3: Dual Induction Architecture & Firmware -->
+<div class="slide-container">
+    <h2 class="slide-title">Dual Induction Firmware Architecture</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 25px;">The prototype implements a <strong>Dual Induction Zone</strong> architecture managed by dedicated ESP32-H2 firmware (`biochar_induction_firmware`):</p>
+        <div class="tiled-content">
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-fire-flame-curved" style="margin-right: 10px; color: #B89E6B;"></i>Main Coil Induction (GPIO4 / SSR 1)</h3>
+                <p style="font-size: 16px;">Drives the primary hollow-copper induction loop surrounding the inner charring cup. PWM-regulated against target setpoints (200°C) with active hysteresis control.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-smog" style="margin-right: 10px; color: #B89E6B;"></i>Catalyst Induction (GPIO5 / SSR 2)</h3>
+                <p style="font-size: 16px;">Drives a secondary induction heater encasing the catalytic converter zone. Operates continuously during active processing cycles to crack syngas volatile compounds (350°C+).</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-gauge-high" style="margin-right: 10px; color: #B89E6B;"></i>0–15 PSI Precision Sensing (GPIO3)</h3>
+                <p style="font-size: 16px;">Utilizes a high-resolution 0–15 PSI pressure sensor (0–5V output mapped via voltage divider to ADC1_CH2) for pressure-swing vacuum drying detection.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-pump-soap" style="margin-right: 10px; color: #B89E6B;"></i>Fluid Pump Driver (GPIO11)</h3>
+                <p style="font-size: 16px;">Dedicated high-current MOSFET driver channel (Solenoid 2 position) providing active heat-exchanger coolant pump control.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14.4: Hardware & Software Safety Interlocks -->
+<div class="slide-container">
+    <h2 class="slide-title">Safety Interlocks & Hardware Trip Protection</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Multi-Tier Safety Architecture</h3>
+                <p>Safety is enforced through physical material limits, firmware interlocks, and Python safety controllers:</p>
+                <ul style="margin-top: 15px; font-size: 18px; line-height: 1.6;">
+                    <li><strong>Overpressure Cutoff:</strong> Firmware automatically trips if internal vessel pressure hits 14.0 PSI (93% of full-scale 15 PSI sensor range).</li>
+                    <li><strong>Overtemperature Trip:</strong> Hard thermal limit at 250.0°C instantly disengages both main and catalyst induction heaters.</li>
+                    <li><strong>Fail-Safe Solenoid Latching:</strong> Solenoid Valve 1 latches OPEN under emergency trip to vent pressure.</li>
+                </ul>
+            </div>
+            <div>
+                <div style="background: #1e293b; color: white; padding: 30px; border-radius: 8px; font-family: 'Azeret Mono', monospace; font-size: 15px; line-height: 1.5;">
+                    <div style="color: #B89E6B; font-weight: bold; margin-bottom: 15px;">// Hardware Safety Interlock Logic</div>
+                    if (psi >= MAX_SAFE_PSI || temp >= MAX_SAFE_TEMP_C) {<br>
+                    &nbsp;&nbsp;emergency_tripped = true;<br>
+                    &nbsp;&nbsp;set_main_heater(false);<br>
+                    &nbsp;&nbsp;set_catalyst_heater(false);<br>
+                    &nbsp;&nbsp;gpio_set_level(PIN_VALVE, 1); // Latch OPEN<br>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Why Pyrolysis Over Traditional Sewage? -->
+<div class="slide-container">
+    <h2 class="slide-title">Beyond the Flush: Why Not Sewage?</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 25px;">Traditional sewage works well in wealthy, water-rich urban centers, but it fails structurally and environmentally when deployed in arid or developing regions. Decentralized pyrolysis solves these macro-level issues.</p>
+
+        <div class="tiled-content">
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-droplet-slash" style="margin-right: 10px; color: #B89E6B;"></i>Absolute Water Independence</h3>
+                <p style="font-size: 16px;">Flush systems waste billions of gallons of purified drinking water just to transport waste. ShuddhiSetu requires <strong>zero external water</strong>, making it viable for communities facing severe drought or arid climates.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-network-wired" style="margin-right: 10px; color: #B89E6B;"></i>Decentralized Infrastructure</h3>
+                <p style="font-size: 16px;">Sewage requires billion-dollar investments in subterranean pipes, pump stations, and treatment plants. Our system is an off-grid appliance that can be dropped anywhere without civil engineering.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-water" style="margin-right: 10px; color: #B89E6B;"></i>Zero Aquatic Contamination</h3>
+                <p style="font-size: 16px;">During heavy rains or system failures, traditional sewage treatment plants frequently overflow, dumping raw blackwater into rivers and oceans. A closed-loop dry system eliminates this risk entirely.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-recycle" style="margin-right: 10px; color: #B89E6B;"></i>Sludge vs. Biochar</h3>
+                <p style="font-size: 16px;">Municipal sewage treatment produces a toxic biosolid "sludge" that must be landfilled or heavily processed. Pyrolysis transforms the same inputs into a high-value, safe agricultural asset.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Why Pyrolysis Over Alternatives -->
+<div class="slide-container">
+    <h2 class="slide-title">Why Pyrolysis Over Alternatives?</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 25px;">While composting is slow and biologically risky, and incineration is highly energy-intensive, ShuddhiSetu's induction system hits the sweet spot:</p>
+
+        <div class="tiled-content">
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-shield-virus" style="margin-right: 10px; color: #B89E6B;"></i>Uncompromised Safety</h3>
+                <p style="font-size: 16px;">Composting requires precise management to avoid biohazards. Our system ensures <strong>100% mechanical sterility</strong> automatically.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-couch" style="margin-right: 10px; color: #B89E6B;"></i>Maximum Convenience</h3>
+                <p style="font-size: 16px;">No need for daily turning, adding sawdust, or handling raw waste. The system manages the complex drying and charring cycles seamlessly for the user.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-bolt" style="margin-right: 10px; color: #B89E6B;"></i>Energy Efficiency</h3>
+                <p style="font-size: 16px;">Incinerators brute-force their way to ash, consuming massive power. Pulsed induction hits exact thermal targets, saving energy while producing valuable biochar instead of CO2.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-stopwatch" style="margin-right: 10px; color: #B89E6B;"></i>Rapid Heating Time</h3>
+                <p style="font-size: 16px;">Instead of waiting months or years for biological breakdown, induction accelerates energy transfer, achieving safe disposal and charring in minutes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: ShuddhiSetu Deep Dive -->
+<div class="slide-container">
+    <h2 class="slide-title">Deep Dive: ShuddhiSetu</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3><i aria-hidden="true" class="fa-solid fa-check-circle" style="color: #1A3D34; margin-right: 10px;"></i> Advantages</h3>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Energy Efficiency:</strong> Balances rapid processing speed with lower energy usage via pulse heating and <a href="https://en.wikipedia.org/wiki/Curie_temperature" target="_blank" style="color: #1A3D34;">magnetite matrices</a>.</li>
+                    <li><strong>Total Sterilization:</strong> Achieves 100% sterilization by flash boiling remnant moisture.</li>
+                    <li><strong>Carbon Sequestration:</strong> Captures and locks carbon into a stable, climate-positive matrix instead of releasing it as CO2/methane.</li>
+                    <li><strong>Valuable Byproduct:</strong> Produces <a href="https://en.wikipedia.org/wiki/Biochar" target="_blank" style="color: #1A3D34;">biochar</a>, a highly valuable agricultural amendment that retains soil moisture and nutrients.</li>
+                </ul>
+            </div>
+            <div>
+                <h3><i aria-hidden="true" class="fa-solid fa-times-circle" style="color: #b91c1c; margin-right: 10px;"></i> Limitations</h3>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li><strong>In Development:</strong> Currently in the <a href="https://github.com/PubInv/Biochar-Toilet" target="_blank" style="color: #1A3D34;">prototyping phase</a>, requiring complex hardware and software integration.</li>
+                    <li><strong>Algorithmic Complexity:</strong> Relies on sophisticated drying algorithms and sensor matrices to optimize energy use.</li>
+                    <li><strong>Power Requirement:</strong> Requires a stable electrical power source, though significantly less than full incineration.</li>
+                    <li><strong>User Interaction:</strong> Requires periodic emptying of the biochar collection chamber.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Project Mission & Goals -->
+<div class="slide-container">
+    <h2 class="slide-title">Project Mission & Goals</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Sanitary & Affordable</h3>
+                <p>To provide an efficient, inexpensive, and sanitary way to dispose of human fecal matter in isolated communities.</p>
+                <div class="metric-box" style="margin-top: 30px;">
+                    <span class="metric-value">$27.38</span>
+                    <span>Target Operating Cost per Year</span>
+                </div>
+            </div>
+            <div>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Sanitization:</strong> Flash boil remnant moisture to kill all bacteria.</li>
+                    <li><strong>Carbon Sequestration:</strong> Locking carbon into biochar granules.</li>
+                    <li><strong>Open-Source:</strong> Allowing local fabrication and repair.</li>
+                </ul>
+                <div style="background: #f1f5f9; padding: 25px; border-radius: 8px; margin-top: 20px;">
+                    <strong>The "Sweet Spot"</strong><br>
+                    <p style="margin-top: 10px; font-size: 16px;">ShuddhiSetu hits the perfect balance between the rapid speed of incineration and the low energy profile of composting, while retaining agricultural nutrients.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NEW Slide: The "Buffer & Batch" Architecture -->
+<div class="slide-container">
+    <h2 class="slide-title" style="margin-bottom: 15px;">The "Buffer & Batch" Architecture (Future Goal)</h2>
+    <div class="content-area">
+        <div class="tiled-content" style="grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0px;">
+            <div class="tile" style="padding: 12px;">
+                <h3 style="color: #1A3D34; font-size: 18px; margin-bottom: 4px;">Decoupled Interface</h3>
+                <ul style="font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-left: 20px; line-height: 1.3; color: #4a5568;">
+                    <li><strong>Capacity:</strong> 15-liter volumetric buffer tank handles up to 8 back-to-back users.</li>
+                    <li><strong>Throughput:</strong> Asynchronous queuing completely isolates user wait times from the rigid 45-minute reactor cycle constraint.</li>
+                </ul>
+            </div>
+            <div class="tile" style="padding: 12px;">
+                <h3 style="color: #1A3D34; font-size: 18px; margin-bottom: 4px;">The "Throat" Mixer</h3>
+                <ul style="font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-left: 20px; line-height: 1.3; color: #4a5568;">
+                    <li><strong>Agitation:</strong> Heavy-duty ribbon auger driven by a high-torque NEMA 23 stepper motor (approx. 3.0 Nm holding torque).</li>
+                    <li><strong>Actuation:</strong> Teflon-coated "bomb bay" style dual-flap trapdoor mechanism via linear actuator for complete and rapid batch transfer.</li>
+                </ul>
+            </div>
+            <div class="tile" style="padding: 12px;">
+                <h3 style="color: #1A3D34; font-size: 18px; margin-bottom: 4px;">Active Dosing</h3>
+                <ul style="font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-left: 20px; line-height: 1.3; color: #4a5568;">
+                    <li><strong>Susceptor Ratio:</strong> Precisely meters bentonite/magnetite powder at a 1:10 ratio (by weight) to the incoming bio-waste.</li>
+                    <li><strong>Fouling Prevention:</strong> Creates a uniform physical coating on wet mass, dramatically reducing wall-adhesion in both buffer and reactor.</li>
+                </ul>
+            </div>
+            <div class="tile" style="padding: 12px;">
+                <h3 style="color: #1A3D34; font-size: 18px; margin-bottom: 4px;">Continuous Preparation</h3>
+                <ul style="font-size: 14px; margin-top: 5px; margin-bottom: 5px; margin-left: 20px; line-height: 1.3; color: #4a5568;">
+                    <li><strong>Homogenization:</strong> Auger operates at a continuous low 15 RPM to knead the mixture.</li>
+                    <li><strong>Pre-conditioning:</strong> 10-minute active mixing guarantees optimal spatial distribution of the magnetic susceptor matrix prior to induction heating.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NEW Slide: Energy Efficiency via Vacuum-Assisted Drying -->
+<div class="slide-container">
+    <h2 class="slide-title">Energy Efficiency via Vacuum-Assisted Drying</h2>
+    <div class="content-area">
+        <ul style="margin-top: 15px; font-size: 22px; line-height: 1.8;">
+            <li><strong>Lowering the Boiling Point:</strong> We use thermally driven pressure swing drying, which induces vacuum-assisted drying. By lowering the internal pressure to 250 mbar absolute, water boils at 67°C instead of 100°C.</li>
+            <li><strong>Massive Energy Savings:</strong> Saves a significant amount of energy during the pre-treatment drying stage by combining gentle heat with low pressure.</li>
+            <li><strong>Efficient Phase Change:</strong> Minimizes heat loss to the surrounding environment while boiling off the high water content of the waste.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 12: Proof of Concept -->
+<div class="slide-container">
+    <h2 class="slide-title">Proof of Concept & Logic</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Architecture & Dryness Detection</h3>
+                <p>The core challenge is energy efficiency. Drying and charring are two separate energy stages. The system must detect exactly when moisture has been eliminated to minimize power waste.</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Heat Source:</strong> Hot plate / modified pressure vessels.</li>
+                    <li><strong>Control:</strong> ESP32 with Solid State Relays (SSR).</li>
+                    <li><strong>Sensing:</strong> Calibrated thermocouples and pressure sensors mapping internal divergence.</li>
+                </ul>
+                <div style="background: #f1f5f9; padding: 20px; border-left: 4px solid #1A3D34; margin-top: 20px; font-size: 16px;">
+                    <strong>The "Flash" Decompression:</strong> At 120°C+ under pressure, a specialized solenoid valve suddenly opens. Liquid water inside pathogens instantly turns to steam, causing them to explode. <strong>100% Sterility Achieved mechanically.</strong>
+                </div>
+            </div>
+            <div>
+                <div class="code-block" style="height: 100%;">// dryness_monitor.py : Core Divergence Logic
+def detect_dryness(temp, pressure):
+    # Identifies 'Dry State' by monitoring
+    # the divergence between Temp and Pressure.
+    if temp > 110 and pressure_plateau_detected():
+        # Temperature continues to rise while
+        # pressure flattens. Sample is dry.
+        disengage_drying_relays()
+        initiate_charring_phase()
+        return True
+    return False
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: PCB Design -->
+<div class="slide-container bleed-image-layout">
+    <div class="bleed-text-side">
+        <h2 class="slide-title">Control Board</h2>
+        <div class="content-area">
+            <ul style="font-size: 1.05rem; line-height: 1.35; margin-top: 10px;">
+                <li style="margin-bottom: 8px;"><strong>Consolidated Control:</strong> Custom 2-layer PCB designed specifically for induction development, housing the ESP32-H2 embedded system.</li>
+                <li style="margin-bottom: 8px;"><strong>Integrated Drivers:</strong> Features dual MOSFET valve drivers and dual Solid-State Relay (SSR) outputs for robust power switching.</li>
+                <li style="margin-bottom: 8px;"><strong>Autonomous Dryness Detection:</strong> Processes thermocouple and analog pressure sensor data, shutting off heating when pressure drops below ~1 PSI while temperature rises.</li>
+                <li style="margin-bottom: 8px;"><strong>Cost-Effective:</strong> Achieves all sensing and control needs on a single board with a low ~$48 BOM.</li>
+                <li style="margin-bottom: 8px;"><strong>Key Finding & Pivot:</strong> Validated end-to-end operation including Flash Decompression. The inability to safely reach full charring temperatures motivated the transition.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="bleed-image-side" style="height: 100%; display: flex; align-items: center; justify-content: center; background-color: #f1f5f9;">
+        <div class="photo-placeholder" style="width: 100%; height: 100%; border-radius: 0; overflow: hidden; position: relative; border: none;">
+            <img loading="lazy" src="../images/PCB_Board.webp" alt="ESP32 PCB" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.0);">
+            <div class="photo-caption" style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); color: white; padding: 10px; border-radius: 4px;">Custom ESP32-H2 Control PCB</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: NEW - Visualizing the Divergence Curve -->
+<div class="slide-container">
+    <h2 class="slide-title">Visualizing the Dryness Divergence</h2>
+    <div class="content-area">
+        <p>The transition from "drying" to "charring" is triggered by detecting the physical state change of water inside the vessel. When the pressure curve plateaus while the temperature continues to rise, the system safely cuts power to the drying relays.</p>
+
+        <div class="chart-container">
+            <div class="chart-legend">
+                <div class="legend-item"><div class="legend-color" style="background: #ef4444;"></div> Internal Temperature (°C)</div>
+                <div class="legend-item"><div class="legend-color" style="background: #3b82f6;"></div> Vessel Pressure (PSI)</div>
+            </div>
+            <svg class="chart-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                <!-- Grid Lines -->
+                <line x1="50" y1="50" x2="950" y2="50" stroke="#f1f5f9" stroke-width="1"/>
+                <line x1="50" y1="125" x2="950" y2="125" stroke="#f1f5f9" stroke-width="1"/>
+                <line x1="50" y1="200" x2="950" y2="200" stroke="#f1f5f9" stroke-width="1"/>
+
+                <!-- Axes -->
+                <line x1="50" y1="275" x2="950" y2="275" class="chart-axis"/>
+                <line x1="50" y1="275" x2="50" y2="25" class="chart-axis"/>
+
+                <!-- Axis Labels -->
+                <text x="20" y="275" class="chart-label">0</text>
+                <text x="15" y="150" class="chart-label">Units</text>
+                <text x="480" y="295" class="chart-label">Time (Process Cycle)</text>
+                <text x="750" y="100" class="chart-label" fill="#1A3D34" font-weight="bold" font-size="16">→ Divergence Detected (Charring Initiated)</text>
+
+                <!-- Pressure Curve (Blue): Rises, then plateaus -->
+                <path d="M 50 275 Q 150 250 300 150 Q 400 120 500 120 L 950 120" class="line-press"/>
+
+                <!-- Temp Curve (Red): Rises steadily -->
+                <path d="M 50 275 Q 300 200 600 100 Q 800 50 950 25" class="line-temp"/>
+
+                <!-- Vertical Marker for Divergence Event -->
+                <line x1="600" y1="25" x2="600" y2="275" stroke="#1A3D34" stroke-width="2" stroke-dasharray="5,5"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+<!-- NEW Slide: Flash Decompression & Mechanical Sterility -->
+<div class="slide-container">
+    <h2 class="slide-title">Flash Decompression: 100% Mechanical Sterility</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Guaranteed Sterilization</h3>
+                <p>Pathogens literally explode, achieving 100% mechanical sterility automatically without relying on slow biological composting processes.</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>The Mechanism:</strong> At temperatures of 120°C+ under pressure, a specialized solenoid valve suddenly opens.</li>
+                    <li><strong>Cellular Destruction:</strong> The rapid drop in pressure causes liquid water inside any pathogens to instantly flash to steam.</li>
+                </ul>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+                <div style="background: #f1f5f9; padding: 30px; border-radius: 8px; border-left: 8px solid #b91c1c; font-size: 20px; font-weight: 500; color: #1A3D34;">
+                    100% Mechanical Sterility achieved via rapid pressure drop. No biological delay.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: Induction Development -->
+<div class="slide-container">
+    <h2 class="slide-title">Induction System Development</h2>
+    <div class="content-area">
+        <div class="two-column" style="grid-template-columns: 1fr 1.2fr;">
+            <div>
+                <h3>Rapid Joule Heating via Induction</h3>
+                <p>Transitioning from resistive heating to <strong>Pulsed Induction Heating</strong> to overcome the thermal inefficiency of processing high liquid volumes.</p>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li><strong>Contactless Energy Transfer:</strong> Heat is generated directly within the internal charring cup.</li>
+                    <li><strong>Accelerated Processing:</strong> Reaches charring thresholds (300°C+) exponentially faster.</li>
+                    <li><strong>System Durability:</strong> Removes exposed heating coils from the corrosive waste environment.</li>
+                </ul>
+                <div style="margin-top: 40px;">
+                    <p style="font-weight: 700; color: #1A3D34; margin-bottom: 10px;">Live Prototype Documentation:</p>
+                    <a href="https://photos.app.goo.gl/5jF5LfbVHRVnEhmv7" target="_blank" class="action-button">
+                        <i aria-hidden="true" class="fa-solid fa-images" style="margin-right: 8px;"></i> View Induction Album
+                    </a>
+                </div>
+            </div>
+            <div class="photo-gallery">
+                <div class="photo-placeholder main-img" style="padding: 0; border: none; overflow: hidden;">
+                    <img loading="lazy" src="../images/PXL_20260424_215319406.webp" alt="Induction Coil Assembly with bare copper coil" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.6); object-position: 50% 20%;">
+                </div>
+                <div class="photo-placeholder" style="padding: 0; border: none; overflow: hidden;">
+                    <img loading="lazy" src="../images/PXL_20260307_002658313.webp" alt="Power Electronics and Solid-State Relays in a gray box" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); object-position: 50% 30%;">
+                </div>
+                <div class="photo-placeholder" style="padding: 0; border: none; overflow: hidden;">
+                    <img loading="lazy" src="../images/PXL_20260327_165919695.webp" alt="Reaction Vessel Mount resting on wooden structural mounts" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); object-position: 30% 60%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Slide 14.1: Induction Hardware Deep Dive -->
+<div class="slide-container bleed-image-layout">
+    <div class="bleed-text-side" style="padding: 10px 30px; display: flex; flex-direction: column; justify-content: center; height: 100%; box-sizing: border-box;">
+        <h2 class="slide-title" style="margin-bottom: 10px; font-size: 24px;">Induction Hardware: Current Development Status</h2>
+        <div class="content-area" style="font-size: 14px; line-height: 1.4;">
+            <p style="margin-bottom: 8px;">
+                The induction architecture is nearing its first integrated
+                test cycle. Major subsystems have been fabricated and assembled,
+                with final vessel integration currently underway.
+            </p>
+            <ul style="margin-top: 5px; line-height: 1.3; margin-bottom: 0;">
+                <li style="margin-bottom: 4px;">
+                    <strong>Copper Induction Coil:</strong>
+                    A formed hollow copper coil has been fabricated to deliver
+                    contactless energy directly to the processing chamber.
+                </li>
+                <li style="margin-bottom: 4px;">
+                    <strong>Nested Vessel Assembly:</strong>
+                    The prototype utilizes inner and outer vessels integrated
+                    within a modified pressure pot to evaluate thermal performance
+                    and sealing strategies.
+                </li>
+                <li style="margin-bottom: 4px;">
+                    <strong>Thermal Insulation:</strong>
+                    Rockwool insulation lines the vessel walls, while an insulated
+                    base minimizes heat loss and improves energy efficiency.
+                </li>
+                <li style="margin-bottom: 4px;">
+                    <strong>Coil Isolation:</strong>
+                    The current design electrically isolates the induction coil
+                    using Kapton tape. Future iterations may transition to a
+                    modular ceramic coil assembly to improve manufacturability,
+                    durability, and serviceability.
+                </li>
+                <li style="margin-bottom: 0px;">
+                    <strong>Next Milestone:</strong>
+                    Final bulkhead integration and vessel sealing will enable
+                    the first fully assembled induction test runs and validation
+                    of the complete thermal process.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <img loading="lazy" class="bleed-image-side" src="../images/coil_vessel_liner.webp" alt="Current induction prototype architecture and future ceramic module concept" style="width: 100%; height: 100%; object-fit: contain;">
+</div>
+
+<!-- Slide 14.2: From Kitchenware to Prototype -->
+<div class="slide-container">
+    <h2 class="slide-title">From Kitchenware to Prototype</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 10px; font-size: 18px;">
+            One of the guiding principles of this project is accessibility. Rather than waiting for custom manufacturing, we leveraged affordable, widely available components to rapidly validate the induction architecture and learn where future refinements are needed.
+        </p>
+
+        <div class="tiled-content" style="gap: 10px; margin-top: 0px;">
+            <div class="tile" style="padding: 15px; margin-bottom: 0;">
+                <h3 style="color:#1A3D34; font-size:18px; margin-bottom: 5px;">
+                    <i aria-hidden="true" class="fa-solid fa-kitchen-set" style="margin-right:10px; color:#B89E6B;"></i>
+                    Start with Existing Hardware
+                </h3>
+                <p style="font-size:14px;">
+                    A <strong>$75 Hawkins 12L pressure cooker</strong> provided a ready-made pressure vessel with an inward-locking safety lid. Its aluminum construction made modifications achievable using common workshop tools.
+                </p>
+            </div>
+
+            <div class="tile" style="padding: 15px; margin-bottom: 0;">
+                <h3 style="color:#1A3D34; font-size:18px; margin-bottom: 5px;">
+                    <i aria-hidden="true" class="fa-solid fa-compass-drafting" style="margin-right:10px; color:#B89E6B;"></i>
+                    Model Before You Build
+                </h3>
+                <p style="font-size:14px;">
+                    The assembly was recreated in <strong>FreeCAD</strong> to determine tubing lengths, validate clearances, and reduce material waste before fabrication began.
+                </p>
+            </div>
+
+            <div class="tile" style="padding: 15px; margin-bottom: 0;">
+                <h3 style="color:#1A3D34; font-size:18px; margin-bottom: 5px;">
+                    <i aria-hidden="true" class="fa-solid fa-hammer" style="margin-right:10px; color:#B89E6B;"></i>
+                    Learn Through Fabrication
+                </h3>
+                <p style="font-size:14px;">
+                    Nearly <strong>50 feet of copper tubing</strong> was hand-formed around the vessel using manual bending tools. The process validated the design while revealing opportunities for improved tooling and assembly methods.
+                </p>
+            </div>
+
+            <div class="tile" style="padding: 15px; margin-bottom: 0;">
+                <h3 style="color:#1A3D34; font-size:18px; margin-bottom: 5px;">
+                    <i aria-hidden="true" class="fa-solid fa-arrow-trend-up" style="margin-right:10px; color:#B89E6B;"></i>
+                    Design the Next Iteration
+                </h3>
+                <p style="font-size:14px;">
+                    Lessons learned are already informing future designs, including dedicated coil-winding jigs, slip-cast ceramic modules with integrated channels, soft magnetic flux concentrators, and stainless steel production vessels.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px; background: #f8faf9; border-left: 6px solid #B89E6B; padding: 10px 20px; border-radius: 8px;">
+            <strong style="color:#1A3D34; font-size:20px;">
+                Engineering Insight
+            </strong>
+            <p style="margin-top:5px; font-size:16px;">
+                The prototype was built using tools commonly found in community workshops and makerspaces. By prioritizing accessible fabrication, each challenge became an opportunity to improve manufacturability, reduce cost, and strengthen the open-source pathway toward global adoption.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14.5: Conductive Heating System -->
+<div class="slide-container">
+    <h2 class="slide-title">Conductive Heating Prototype</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Direct Thermal Transfer</h3>
+                <p>Demonstration of the conductive heating system prototype, highlighting direct energy transfer.</p>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; background: #000; border-radius: 8px;">
+                <video width="100%" controls preload="none" style="border-radius: 8px; border: 1px solid #e2e8f0; max-height: 400px;">
+                    <source src="conductive_heating.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 15: NEW - Induction Innovations: Magnetite Matrix -->
+<div class="slide-container">
+    <h2 class="slide-title">Induction Innovations: Magnetite Matrix</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 30px;">The induction system goes beyond basic contactless heating. By utilizing a <strong>magnetite and clay-based medium</strong> as the magnetic susceptor, we achieve major breakthroughs in processing physics:</p>
+
+        <div class="two-column">
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+                <div style="background: #1A3D34; color: white; padding: 25px; border-radius: 8px;">
+                    <h3 style="color: #B89E6B; margin-bottom: 10px; font-size: 22px;"><i aria-hidden="true" class="fa-solid fa-droplet" style="margin-right: 10px;"></i>1. Massive Surface Area</h3>
+                    <p style="color: #e2e8f0; font-size: 16px;">The clay acts as a highly effective absorber, distributing liquid waste (feces and urine) evenly throughout the entire substrate. This creates an optimal surface area to wet mass ratio.</p>
+                </div>
+                <div style="background: #1e293b; color: white; padding: 25px; border-radius: 8px;">
+                    <h3 style="color: #B89E6B; margin-bottom: 10px; font-size: 22px;"><i aria-hidden="true" class="fa-solid fa-wind" style="margin-right: 10px;"></i>2. Rapid Dewatering</h3>
+                    <p style="color: #e2e8f0; font-size: 16px;">A relatively low induction frequency provides <strong>even volumetric heating</strong> (except at the containment walls). This triggers rapid boiling and steam generation, drastically accelerating the dewatering phase.</p>
+                </div>
+            </div>
+            <div>
+                <div style="border: 2px solid #1A3D34; background: #f8faf9; padding: 40px 30px; border-radius: 8px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <i aria-hidden="true" class="fa-solid fa-shield-halved" style="font-size: 50px; color: #1A3D34; margin-bottom: 20px;"></i>
+                    <h3 style="margin-bottom: 15px; font-size: 26px;">Inherent Safety:<br>The Curie Effect</h3>
+                    <p style="font-size: 18px;">Magnetite has a fixed <strong>Curie temperature</strong>. Once the substrate reaches a specific thermal threshold, it naturally loses its magnetic properties and stops absorbing induction energy.</p>
+                    <p style="margin-top: 15px; font-size: 18px; font-weight: 700; color: #B89E6B;">This provides a physical failsafe against thermal runaway, independent of software.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 16: NEW - Off-Grid Power Architecture -->
+<div class="slide-container">
+    <h2 class="slide-title">Off-Grid Power & Energy Buffering</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>Pulsed induction heating introduces significant, localized peak current draws. Because this system is designed for isolated environments without reliable grid ties, continuous high-amperage draw is impossible.</p>
+                <p style="margin-top: 15px;">To solve this, the thermal architecture is paired with a local energy buffering system.</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Solar Integration:</strong> Managed via a hybrid inverter topology capable of handling variable MPPT inputs.</li>
+                    <li><strong>Battery Buffering:</strong> Designed around a standard 48V LiFePO4 battery rack.</li>
+                    <li><strong>Load Shifting:</strong> The LiFePO4 bank absorbs the intense, short-term loads of the induction cycle, safely recharging via solar during the system's idle hours.</li>
+                </ul>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; background: #f8faf9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px;">
+                <i aria-hidden="true" class="fa-solid fa-solar-panel" style="font-size: 40px; color: #B89E6B; margin-bottom: 15px;"></i>
+                <h3 style="margin-bottom: 10px;">PV Array</h3>
+                <i aria-hidden="true" class="fa-solid fa-arrow-down" style="color: #94a3b8; margin: 10px 0;"></i>
+                <div style="background: #1A3D34; color: white; padding: 15px 30px; border-radius: 4px; font-weight: 700;">Hybrid Inverter</div>
+                <i aria-hidden="true" class="fa-solid fa-arrow-down-up-across-line" style="color: #94a3b8; margin: 10px 0;"></i>
+                <div style="border: 2px solid #1A3D34; padding: 15px 30px; border-radius: 4px; font-weight: 700; color: #1A3D34;">48V LiFePO4 Battery Bank</div>
+                <i aria-hidden="true" class="fa-solid fa-arrow-down" style="color: #94a3b8; margin: 10px 0;"></i>
+                <h3 style="margin-top: 10px; color: #ef4444;">Biochar Induction Load</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NEW Slide: Secondary Catalytic Filtration Stage -->
+<div class="slide-container">
+    <h2 class="slide-title">Secondary Catalytic Filtration: Zero Emissions (Future Goal)</h2>
+    <div class="content-area">
+        <ul style="margin-top: 15px; font-size: 20px; line-height: 1.8;">
+            <li><strong>Lid-Mounted "Smart Stack":</strong> Exhaust is routed through a central chimney pipe equipped with a steam-rated solenoid valve.</li>
+            <li><strong>Thermal Cracking:</strong> A cartridge heater brings a magnetite (Fe<sub>3</sub>O<sub>4</sub>) catalyst bed up to ~350°C to crack volatile organic compounds (VOCs) and odors.</li>
+            <li><strong>Dual-Function Magnetite:</strong> Oxidizes Carbon Monoxide (CO) into harmless CO<sub>2</sub>.</li>
+            <li><strong>Self-Sustaining SCR:</strong> Uses the ammonia (NH<sub>3</sub>) naturally present in the urine to neutralize Nitrogen Oxides (NO<sub>x</sub>) into harmless Nitrogen (N<sub>2</sub>) and water.</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- NEW Slide: Hard Economics & Manufacturability -->
+<div class="slide-container">
+    <h2 class="slide-title">Hard Economics: The Bottom Line</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;">Target Operating Cost</h3>
+                <p style="font-size: 16px;">Designed to be affordable for the poorest communities, with a target operating cost of just <strong>$27.38 per year</strong>.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;">Affordable Electronics</h3>
+                <p style="font-size: 16px;">The integrated control board (housing the ESP32 and solid-state relays) requires a highly affordable Bill of Materials (BOM) of <strong>~$48</strong>.</p>
+            </div>
+            <div class="tile" style="grid-column: span 2;">
+                <h3 style="color: #1A3D34; font-size: 20px;">Open-Source Hardware</h3>
+                <p style="font-size: 16px;">Built using accessible toolchains (KiCad, PlatformIO) and standard FDM 3D printing to ensure global replicability and local repair.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 17: NEW - Manufacturability & BOM -->
+<div class="slide-container">
+    <h2 class="slide-title">Local Fabrication & The Toolchain</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 25px;">For open-source hardware to achieve global equity, it must be replicable. We engineered ShuddhiSetu using accessible toolchains and standard components so it can be built and serviced in local makerspaces around the world.</p>
+
+        <div class="tiled-content">
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-microchip" style="margin-right: 10px; color: #B89E6B;"></i>Control Electronics</h3>
+                <p style="font-size: 16px;">The logic core relies on the ubiquitous ESP32 microcontroller. Custom PCB schematics and routing for the solid-state relay integration are drafted entirely in <strong>KiCad</strong> to ensure anyone can modify or print the boards.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-code" style="margin-right: 10px; color: #B89E6B;"></i>Firmware Deployment</h3>
+                <p style="font-size: 16px;">The dryness monitoring algorithms and hardware control loops are written in C/C++ and managed using <strong>PlatformIO</strong>, providing a consistent compilation environment regardless of the user's local operating system.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1A3D34; font-size: 20px;"><i aria-hidden="true" class="fa-solid fa-cubes" style="margin-right: 10px; color: #B89E6B;"></i>Hardware Fabrication</h3>
+                <p style="font-size: 16px;">Instead of relying on proprietary manufacturing, non-heat-critical enclosures and mounting brackets are designed parametrically for standard FDM 3D printing, making them easily reproducible in community-driven fabrication studios.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 18: Biochar Circular Economy & Call to Action -->
+<div class="slide-container">
+    <h2 class="slide-title">The Circular Economy & Open-Source Impact</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Beyond Disposal: Net-Negative Sanitation</h3>
+                <p>The byproduct of this process is not waste—it is a climate-positive resource. High-temperature pyrolysis locks carbon into a stable matrix that prevents methane release.</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Agriculture:</strong> Biochar-amended soil holds 50% more moisture.</li>
+                    <li><strong>Nutrient Sponge:</strong> Prevents fertilizer runoff during heavy rains.</li>
+                    <li><strong>Carbon Sink:</strong> Sequesters carbon in the soil for 100+ years.</li>
+                </ul>
+            </div>
+            <div style="background: #1e293b; color: white; padding: 40px; border-radius: 8px;">
+                <h3 style="color: #B89E6B; margin-bottom: 20px;">Open Source Collaboration</h3>
+                <p style="color: #e2e8f0; margin-bottom: 20px;">This hardware is being developed in the public domain for global equity. We need contributors for:</p>
+                <ul style="color: #e2e8f0; margin-bottom: 30px;">
+                    <li style="color: #e2e8f0;">High-pressure mechanical seals</li>
+                    <li style="color: #e2e8f0;">Induction heating optimization</li>
+                    <li style="color: #e2e8f0;">IoT monitoring & control logic</li>
+                </ul>
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px; text-align: center;">
+                    <i aria-hidden="true" class="fa-brands fa-github" style="font-size: 24px; margin-bottom: 10px; color: #e2e8f0;"></i><br>
+                    <a href="https://github.com/PubInv/Biochar-Toilet" style="font-family: 'Azeret Mono', monospace; font-size: 16px; color: #B89E6B; text-decoration: none;">Original Technical Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 19: Q&A -->
+<div class="slide-container" style="justify-content: center; align-items: center; text-align: center;">
+    <h2 style="font-size: 60px;">Questions?</h2>
+    <p class="subtitle">Accelerating Nature. Protecting Every Drop.</p>
+
+
+    <div style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 30px;">
+        <p>Accelerating Nature. Protecting Every Drop.</p>
+    </div>
+</div>
+
+<div id="progress-container" role="progressbar" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1">
+    <div id="progress-bar"></div>
+</div>
+
+<button id="present-btn" aria-label="Enter presentation mode (Use Space/Arrows to navigate)" title="Enter presentation mode (Use Space/Arrows to navigate)">
+    <i aria-hidden="true" class="fa-solid fa-desktop"></i> Present
+</button>
+
+<script>
+    const presentBtn = document.getElementById('present-btn');
+    const progressContainer = document.getElementById('progress-container');
+    const progressBar = document.getElementById('progress-bar');
+    const body = document.body;
+    const slides = document.querySelectorAll('.slide-container');
+    let currentSlide = 0;
+    let isPresenting = false;
+
+    // Helper to update progress bar
+    function updateProgress() {
+        if (!isPresenting) return;
+        const totalSlides = slides.length;
+        const current = currentSlide + 1;
+        const percentage = (current / totalSlides) * 100;
+
+        progressBar.style.width = `${percentage}%`;
+        progressContainer.setAttribute('aria-valuemax', totalSlides);
+        progressContainer.setAttribute('aria-valuenow', current);
+    }
+
+    // Helper to calculate scaling
+    function scaleActiveSlide() {
+        if (!isPresenting) return;
+        const activeSlide = slides[currentSlide];
+        if (!activeSlide) return;
+
+        if (window.innerWidth <= 800) {
+            activeSlide.style.transform = 'none';
+            return;
+        }
+
+        // Slide natural dimensions (from CSS)
+        const slideWidth = 1280;
+        const slideHeight = 720;
+
+        // Window dimensions
+        const winWidth = window.innerWidth;
+        const winHeight = window.innerHeight;
+
+        // Calculate scale factor to fit
+        const scaleX = winWidth / slideWidth;
+        const scaleY = winHeight / slideHeight;
+        const scale = Math.min(scaleX, scaleY);
+
+        activeSlide.style.transform = `scale(${scale})`;
+    }
+
+    // Toggle presentation mode
+    presentBtn.addEventListener('click', () => {
+        presentBtn.blur(); // Remove focus to prevent spacebar from double-clicking it
+
+        if (!isPresenting) {
+            // Enter presentation mode
+            isPresenting = true;
+            body.classList.add('presentation-mode');
+            presentBtn.innerHTML = '<i aria-hidden="true" class="fa-solid fa-times"></i> Exit';
+            presentBtn.setAttribute('aria-label', 'Exit presentation mode (Esc)');
+            presentBtn.setAttribute('title', 'Exit presentation mode (Esc)');
+
+            // Mark current slide active
+            slides.forEach(s => {
+                s.classList.remove('active');
+                s.style.transform = 'none'; // reset
+            });
+            slides[currentSlide].classList.add('active');
+
+            // Request Fullscreen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log("Error attempting to enable fullscreen:", err);
+                });
+            }
+
+            scaleActiveSlide();
+            updateProgress();
+
+        } else {
+            // Exit presentation mode
+            isPresenting = false;
+            body.classList.remove('presentation-mode');
+            presentBtn.innerHTML = '<i aria-hidden="true" class="fa-solid fa-desktop"></i> Present';
+            presentBtn.setAttribute('aria-label', 'Enter presentation mode (Use Space/Arrows to navigate)');
+            presentBtn.setAttribute('title', 'Enter presentation mode (Use Space/Arrows to navigate)');
+
+            // Reset all slides
+            slides.forEach(s => {
+                s.classList.remove('active');
+                s.style.transform = 'none';
+            });
+
+            // Exit Fullscreen
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+
+            // Scroll back to where we were (roughly)
+            slides[currentSlide].scrollIntoView();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!isPresenting) return;
+
+        if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') {
+            e.preventDefault(); // Prevent default scrolling/clicking
+            if (currentSlide < slides.length - 1) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide++;
+                slides[currentSlide].classList.add('active');
+                scaleActiveSlide();
+                updateProgress();
+            }
+        } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+            e.preventDefault(); // Prevent default scrolling/clicking
+            if (currentSlide > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide--;
+                slides[currentSlide].classList.add('active');
+                scaleActiveSlide();
+                updateProgress();
+            }
+        } else if (e.key === 'Escape') {
+             // Handle escape key (browser usually handles exiting fullscreen,
+             // so we just listen to the fullscreenchange event to clean up CSS state)
+        }
+    });
+
+    // Handle exiting fullscreen via ESC key or browser controls
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && isPresenting) {
+             presentBtn.click(); // Programmatically exit our mode
+        }
+    });
+
+    // Recalculate scale on resize
+    // ⚡ Bolt Optimization: Throttled resize event using requestAnimationFrame to prevent layout thrashing
+    let resizeTicking = false;
+    window.addEventListener('resize', () => {
+        if (!resizeTicking) {
+            window.requestAnimationFrame(() => {
+                scaleActiveSlide();
+                resizeTicking = false;
+            });
+            resizeTicking = true;
+        }
+    });
+
+</script>
+
+</body>
+</html>
